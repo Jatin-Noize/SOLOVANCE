@@ -49,7 +49,7 @@ export default function Footer() {
       <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
         <p>&copy; 2024 Sync Logo</p>
         <div className="flex gap-4 mt-4 md:mt-0">
-          <Link href="#" className="hover:text-white">Privacy Policy</Link>
+          <Link href="#" className="hover:text-white">Privacy Policy 123</Link>
           <Link href="#" className="hover:text-white">Disclaimer</Link>
         </div>
       </div>
