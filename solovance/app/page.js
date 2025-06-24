@@ -4,7 +4,11 @@ import Footer from '@/components/Footer';
 import HeroSection from '@/components/Hero';
 import Navbar from '@/components/Navbar';
 import React, { useEffect } from 'react';
+
 import LogoMarquee from '@/components/LogoMarquee';
+import CounterSection from '@/components/CounrterSection';
+import AnimatedQuote from '@/components/AnimatedQuote';
+import GettingStarted from '@/components/GettingStarted';
 
 const Page = () => {
   useEffect(() => {
@@ -43,11 +47,14 @@ const Page = () => {
       
       {/* Centered content container */}
       <div className="flex flex-col items-center w-full">
-        <div className="w-full fixed max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="w-full z-50 fixed max-w-7xl px-4 sm:px-6 lg:px-8">
           <Navbar />
         </div>
         <HeroSection />
          <LogoMarquee />
+         <CounterSection/>
+         <AnimatedQuote/>
+         <GettingStarted/>
         <Footer />
       </div>
 
