@@ -5,8 +5,8 @@ import Logo from "../public/SOLVANCE-04.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#14001d] text-gray-300 px-6 py-10 mt-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+    <footer className="bg-[#14001d] w-screen p-24  text-gray-300 px-6 py-10 mt-20">
+      <div className="  mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Left section: logo and CTA */}
         <div>
           <div className="flex items-center gap-2 mb-4">
