@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import HeroSection from '@/components/Hero';
 import Navbar from '@/components/Navbar';
 import React, { useEffect } from 'react';
+import LogoMarquee from '@/components/LogoMarquee';
 
 const Page = () => {
   useEffect(() => {
@@ -46,6 +47,7 @@ const Page = () => {
           <Navbar />
         </div>
         <HeroSection />
+         <LogoMarquee />
         <Footer />
       </div>
 
