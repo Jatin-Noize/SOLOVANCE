@@ -29,7 +29,7 @@ export default function Navbar() {
                             alt="Solvance Logo"
                             width={180}
                             height={60}
-                            className="object-contain mix-multiply shadow hover:opacity-90 transition-opacity"
+                            className="object-contain mix-multiply hover:opacity-90 transition-opacity"
                             priority
                         />
                     </Link>
@@ -44,7 +44,7 @@ export default function Navbar() {
                         How it works
                     </Link>
                     <Link 
-                        href="#" 
+                        href="/portfolio" 
                         className="text-purple-400 hover:text-white transition-colors duration-200 font-semibold hover:underline underline-offset-4 decoration-purple-400"
                     >
                         Portfolio

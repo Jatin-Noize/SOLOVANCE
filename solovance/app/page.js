@@ -4,11 +4,11 @@ import Footer from '@/components/Footer';
 import HeroSection from '@/components/Hero';
 import Navbar from '@/components/Navbar';
 import React, { useEffect } from 'react';
-
 import LogoMarquee from '@/components/LogoMarquee';
 import CounterSection from '@/components/CounrterSection';
 import AnimatedQuote from '@/components/AnimatedQuote';
 import GettingStarted from '@/components/GettingStarted';
+import MarqueeStrip from '@/components/MarqueeStrip';
 
 const Page = () => {
   useEffect(() => {
@@ -42,23 +42,27 @@ const Page = () => {
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-purple-900 via-black to-purple-900 relative overflow-hidden'>
-      {/* Star container */}
+      {/* Star container - removed scroll-smooth from here as it's not needed */}
       <div className="star-container absolute inset-0 overflow-hidden pointer-events-none"></div>
       
-      {/* Centered content container */}
-      <div className="flex flex-col items-center w-full">
+      {/* Main content container */}
+      <div className="flex flex-col items-center w-full scroll-smooth"> {/* Only needed here */}
         <div className="w-full z-50 fixed max-w-7xl px-4 sm:px-6 lg:px-8">
           <Navbar />
         </div>
         <HeroSection />
-         <LogoMarquee />
-         <CounterSection/>
-         <AnimatedQuote/>
-         <GettingStarted/>
+        <LogoMarquee />
+        <CounterSection/>
+        <AnimatedQuote/>
+        <GettingStarted/>
+        <div className='rotate-6 h-36 m-36'><MarqueeStrip/></div>
         <Footer />
       </div>
 
       <style jsx global>{`
+        html {
+          scroll-behavior: smooth; /* This is the most important line for smooth scrolling */
+        }
         @keyframes twinkle {
           0% { transform: scale(1); opacity: 0.2; }
           50% { transform: scale(1.5); opacity: 1; }
@@ -72,10 +76,10 @@ const Page = () => {
           filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
         }
         .star:nth-child(3n) {
-          background-color: #d8b4fe; /* purple-300 */
+          background-color: #d8b4fe;
         }
         .star:nth-child(5n) {
-          background-color: #c084fc; /* purple-400 */
+          background-color: #c084fc;
         }
       `}</style>
     </div>
