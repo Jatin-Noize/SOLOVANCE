@@ -1,21 +1,22 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {Truculenta,Michroma,Unbounded} from "next/font/google"
+import { Truculenta, Michroma, Unbounded } from "next/font/google";
 
 const font = Truculenta({
   weight: "400",
   subsets: ["latin"]
+});
 
-
-})
 const getfont = Unbounded({
-  weight:"400",
-  subsets:["latin"]
-})
+  weight: "400",
+  subsets: ["latin"]
+});
+
 const fontans = Michroma({
   weight: "400",
   subsets: ['latin']
-})
+});
+
 const FAQSection = ({ id }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -55,76 +56,77 @@ const FAQSection = ({ id }) => {
   };
 
   return (
-    <section className='m-24' id={id}>
+    <section id={id} className="px-4 sm:px-6 lg:px-8 py-12 md:py-24 mx-auto md:w-4xl max-w-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className=""
       >
-        <div className="min-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h1 className={`text-4xl font-bold text-white mb-4 ${getfont.className}`}>FAQ</h1>
-            <p className={`text-xl text-purple-200 ${getfont.className}`}>
-              Get your agency in sync with Sync Logo at the best price.
-            </p>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-center mb-8 md:mb-12"
+        >
+          <h1 className={`text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4 ${getfont.className}`}>
+            FAQ
+          </h1>
+          <p className={`text-lg md:text-xl text-purple-200 ${getfont.className}`}>
+            Get your agency in sync with Sync Logo at the best price.
+          </p>
+        </motion.div>
 
-          <motion.div 
-            className="space-y-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.02 }}
-                className="border max-w-4xl border-purple-700 rounded-lg overflow-hidden bg-purple-900/30 backdrop-blur-sm"
+        <motion.div 
+          className="space-y-3 md:space-y-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.01 }}
+              className="border border-purple-700 m-4 rounded-lg overflow-hidden bg-purple-900/30 backdrop-blur-sm"
+            >
+              <button
+                className="w-full px-4 py-3 md:px-6 md:py-4 text-left flex justify-between items-center hover:bg-purple-800/30 transition-all"
+                onClick={() => toggleFAQ(index)}
+                aria-expanded={activeIndex === index}
+                aria-controls={`faq-content-${index}`}
               >
-                <button
-                  className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-purple-800/30 transition-all"
-                  onClick={() => toggleFAQ(index)}
-                  aria-expanded={activeIndex === index}
-                  aria-controls={`faq-content-${index}`}
+                <span className={`text-base md:text-lg font-medium text-white ${font.className}`}>
+                  {faq.question}
+                </span>
+                <motion.span
+                  animate={{ rotate: activeIndex === index ? 45 : 0 }}
+                  className="text-xl md:text-2xl text-purple-300"
                 >
-                  <span className={`text-lg font-medium text-white  ${font.className}  `}>
-                    {faq.question}
-                  </span>
-                  <motion.span
-                    animate={{ rotate: activeIndex === index ? 45 : 0 }}
-                    className="text-2xl text-purple-300"
-                  >
-                    +
-                  </motion.span>
-                </button>
+                  +
+                </motion.span>
+              </button>
 
-                <AnimatePresence>
-                  {activeIndex === index && (
-                    <motion.div
-                      id={`faq-content-${index}`}
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="px-6 min-w-4xl overflow-hidden"
-                    >
-                      <div className={`pb-5 max-w-4xl text-purple-100 ${fontans.className}`}>{faq.answer}</div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+              <AnimatePresence>
+                {activeIndex === index && (
+                  <motion.div
+                    id={`faq-content-${index}`}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="px-4 md:px-6 overflow-hidden"
+                  >
+                    <div className={`pb-3 md:pb-4 text-sm md:text-base text-purple-100 ${fontans.className}`}>
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </motion.div>
       </motion.div>
     </section>
   );
