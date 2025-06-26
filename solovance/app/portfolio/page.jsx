@@ -45,9 +45,10 @@ const scrollX = {
   },
 };
 
-export default function LogoMarquee() {
+export default function LogoMarquee({id}) {
   return (
-    <div className="bg-[#10002b] py-10 overflow-hidden space-y-6">
+   <section id={id}>
+     <div id="porfolio" className="bg-[#10002b] py-10 overflow-hidden space-y-6">
       {/* Row 1 */}
       <div className="relative w-full overflow-hidden">
         <motion.div
@@ -88,5 +89,6 @@ export default function LogoMarquee() {
         </motion.div>
       </div>
     </div>
+   </section>
   );
 }

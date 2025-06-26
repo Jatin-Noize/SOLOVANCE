@@ -1,16 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import {Mina,Michroma} from "next/font/google"
+import { Mina, Michroma } from "next/font/google";
 import Logo from "../public/SOLVANCE-04.png";
 import { motion } from 'framer-motion';
- const herofont = Mina({
-      weight:"400",
-      subsets:['latin']
-    });
-     const footer = Michroma({
-      weight:"400",
-      subsets:['latin']
-    }); 
+
+const herofont = Mina({
+  weight: "400",
+  subsets: ['latin']
+});
+
+const footer = Michroma({
+  weight: "400",
+  subsets: ['latin']
+}); 
+
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -36,6 +39,24 @@ const itemVariants = {
 };
 
 export default function Footer() {
+  // Smooth scroll function
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+      
+      // Update URL without page reload
+      if (window.history.pushState) {
+        window.history.pushState(null, null, `#${id}`);
+      } else {
+        window.location.hash = `#${id}`;
+      }
+    }
+  };
+
   return (
     <motion.footer 
       initial="hidden"
@@ -59,7 +80,7 @@ export default function Footer() {
               />
             </Link>
           </div>
-          <motion.p  variants={itemVariants} className={`text-sm text-gray-400 mb-6 ${footer.className}`}>
+          <motion.p variants={itemVariants} className={`text-sm text-gray-400 mb-6 ${footer.className}`}>
             Get your agency in sync with Solvance at the best price.
           </motion.p>
           <motion.button 
@@ -76,21 +97,40 @@ export default function Footer() {
         </motion.div>
 
         {/* Quick links section */}
-        <motion.div className={`${herofont.className}`}
-         variants={itemVariants}>
+        <motion.div className={`${herofont.className}`} variants={itemVariants}>
           <motion.h3 variants={itemVariants} className="text-white font-semibold mb-4 text-sm md:text-base">Quick links</motion.h3>
           <motion.ul variants={containerVariants} className="space-y-2 text-sm">
             <motion.li variants={itemVariants}>
-              <Link href="#" className="hover:text-white transition-colors block py-1">How it works</Link>
+              <button 
+                onClick={() => scrollToSection('how-it-works')}
+                className="text-gray-300 hover:text-white transition-colors duration-200 hover:underline underline-offset-4 decoration-purple-400 text-left w-full py-1"
+              >
+                How it works
+              </button>
             </motion.li>
             <motion.li variants={itemVariants}>
-              <Link href="#" className="hover:text-white transition-colors block py-1">Portfolio</Link>
+              <button
+                onClick={() => scrollToSection('portfolio')}
+                className="text-purple-400 hover:text-white transition-colors duration-200 font-semibold hover:underline underline-offset-4 decoration-purple-400 text-left w-full py-1"
+              >
+                Portfolio
+              </button>
             </motion.li>
             <motion.li variants={itemVariants}>
-              <Link href="#" className="hover:text-white transition-colors block py-1">Pricing</Link>
+              <button
+                onClick={() => scrollToSection('pricing')}
+                className="text-gray-300 hover:text-white transition-colors duration-200 hover:underline underline-offset-4 decoration-purple-400 text-left w-full py-1"
+              >
+                Pricing
+              </button>
             </motion.li>
             <motion.li variants={itemVariants}>
-              <Link href="#" className="hover:text-white transition-colors block py-1">FAQ</Link>
+              <button
+                onClick={() => scrollToSection('faq')}
+                className="text-gray-300 hover:text-white transition-colors duration-200 hover:underline underline-offset-4 decoration-purple-400 text-left w-full py-1"
+              >
+                FAQ
+              </button>
             </motion.li>
           </motion.ul>
         </motion.div>
@@ -104,16 +144,16 @@ export default function Footer() {
         <motion.p variants={itemVariants} className="mb-4 md:mb-0">&copy; 2024 Sync Logo. All rights reserved.</motion.p>
         <motion.div variants={containerVariants} className="flex flex-wrap gap-4 justify-center md:justify-end">
           <motion.span variants={itemVariants}>
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
           </motion.span>
           <motion.span variants={itemVariants}>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
           </motion.span>
           <motion.span variants={itemVariants}>
-            <Link href="#" className="hover:text-white transition-colors">Disclaimer</Link>
+            <Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
           </motion.span>
           <motion.span variants={itemVariants}>
-            <Link href="#" className="hover:text-white transition-colors">Cookie Policy</Link>
+            <Link href="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
           </motion.span>
         </motion.div>
       </motion.div>

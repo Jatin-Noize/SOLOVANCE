@@ -9,6 +9,8 @@ import CounterSection from '@/components/CounrterSection';
 import AnimatedQuote from '@/components/AnimatedQuote';
 import GettingStarted from '@/components/GettingStarted';
 import MarqueeStrip from '@/components/MarqueeStrip';
+import PricingComponent from '@/components/PricingComponent';
+import FAQSection from '@/components/FAQSection';
 
 const Page = () => {
   useEffect(() => {
@@ -51,18 +53,18 @@ const Page = () => {
           <Navbar />
         </div>
         <HeroSection />
-        <LogoMarquee />
+        <LogoMarquee id="portfolio" />
         <CounterSection/>
         <AnimatedQuote/>
-        <GettingStarted/>
+        <GettingStarted id="how-it-works" />
+        <PricingComponent id="pricing" />
         <div className='rotate-6 h-36 m-36'><MarqueeStrip/></div>
+        <FAQSection id="faq" />
         <Footer />
       </div>
 
       <style jsx global>{`
-        html {
-          scroll-behavior: smooth; /* This is the most important line for smooth scrolling */
-        }
+       
         @keyframes twinkle {
           0% { transform: scale(1); opacity: 0.2; }
           50% { transform: scale(1.5); opacity: 1; }

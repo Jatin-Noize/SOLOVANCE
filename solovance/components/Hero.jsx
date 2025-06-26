@@ -15,7 +15,15 @@ import { ArrowUp, ArrowRight, CalendarCheck } from 'lucide-react';
 
 export default function HeroSection() {
   const [isHovered, setIsHovered] = useState(false);
-
+ const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
   return (
     <main className="min-h-screen text-white flex items-center justify-center px-4">
       <div className="max-w-3xl text-center">
@@ -63,20 +71,21 @@ export default function HeroSection() {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="flex justify-center gap-4"
         >
-          <Link
-            href="#"
+          <div
+            href="/pricing"
             className={`relative w-28  bg-purple-600 hover:bg-purple-700 transition-colors duration-200 text-white px-5 py-2.5 rounded-full text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/20 whitespace-nowrap overflow-hidden ${button.className} `}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <span
+            <button
+                        onClick={() => scrollToSection('pricing')}
               className={`flex items-center gap-2 transition-all duration-200 ${
                 isHovered ? "opacity-0 translate-x-[-20px]" : "opacity-100"
               }`}
             >
               See plans
               <ArrowRight size={16} className="stroke-[2.5]" />
-            </span>
+            </button>
 
             <ArrowUp
               size={24}
@@ -86,7 +95,7 @@ export default function HeroSection() {
                   : "opacity-0 translate-y-2"
               }`}
             />
-          </Link>
+          </div>
 
           <button className="bg-white/10 hover:bg-white/20 transition px-6 py-3 rounded-full text-white font-medium flex items-center gap-2">
             <CalendarCheck size={18} />
