@@ -26,7 +26,7 @@ export default function HeroSection() {
   };
   return (
     <main className="min-h-screen text-white flex items-center justify-center px-4">
-      <div className="max-w-3xl text-center">
+      <div className="max-w-3xl sm:text-left text-center">
         
         {/* Tagline */}
         <motion.div
@@ -34,7 +34,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }} // <-- Exit animation
           transition={{ duration: 0.6 }}
-          className={`inline-block font-semibold bg-white/10 text-sm px-4 py-2 rounded-full mb-6 ${herofont.className} `}
+          className={`inline-block   font-semibold bg-white/10 text-sm px-4 py-2 rounded-full mb-6 ${herofont.className} `}
         >
           Three concepts in two days
         </motion.div>
@@ -45,9 +45,9 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }} // <-- Exit animation
           transition={{ duration: 0.8 }}
-          className={` ${herofont.className}  text-3xl sm:text-5xl font-extrabold leading-tight mb-6`}
+          className={` ${herofont.className}  text-3xl sm:text-left sm:text-5xl font-extrabold leading-tight mb-6`}
         >
-          The First Choice in <span className={`text-purple-500 ${herofont.className}`}>WHITE LABEL</span> Logo Design for Agencies
+          The First Choice in <span className={`text-purple-500 sm:text-left ${herofont.className}`}>WHITE LABEL</span> Logo Design for Agencies
           <br className="hidden sm:block" />
         </motion.h1>
 
@@ -58,7 +58,7 @@ export default function HeroSection() {
           exit={{ opacity: 0 }} // <-- Exit animation
           transition={{ delay: 0.6, duration: 0.8 }}
           className={` ${herofont.className
-          } text-gray-300 mb-8`}
+          } text-gray-300 mb-8 sm:text-left`}
         >
           We deliver professionally hand-designed white label logos within 1 day all at a fixed price
         </motion.p>

@@ -39,7 +39,7 @@ const scrollX = {
       x: {
         repeat: Infinity,
         repeatType: 'loop',
-        duration: 20,
+        duration: 40,
         ease: 'linear',
       },
     },
@@ -50,7 +50,7 @@ const scrollX = {
       x: {
         repeat: Infinity,
         repeatType: 'loop',
-        duration: 20,
+        duration: 40,
         ease: 'linear',
       },
     },
@@ -59,68 +59,71 @@ const scrollX = {
 
 export default function LogoMarquee({ id }) {
   return (
-    <section id={id}>
-      <div className="bg-[#10002b9c] py-4 overflow-hidden space-y-12">
-        {/* Row 1 */}
-        <div className="relative  w-full overflow-hidden">
+    <section id={id} className="relative">
+  {/* Vignette overlay */}
+  <div className="absolute inset-0 pointer-events-none bg-radial-gradient(ellipse_at_center, rgba(0,0,0,0) 0%, rgba(16,0,43,0.5) 70%, rgba(16,0,43,0.8) 100%) z-10" />
+  
+  <div className="bg-[#10002b44] py-4 overflow-hidden space-y-12 relative">
+    {/* Row 1 */}
+    <div className="relative w-full overflow-hidden">
+      <motion.div
+        className="flex w-max gap-8"
+        variants={scrollX}
+        animate="left"
+      >
+        {[...logosRow1, ...logosRow1].map((logo, i) => (
           <motion.div
-            className="flex w-max gap-16"
-            variants={scrollX}
-            animate="left"
+            key={i}
+            className="relative w-64 h-44" // Increased size on desktop
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.3 }
+            }}
           >
-            {[...logosRow1, ...logosRow1].map((logo, i) => (
-              <motion.div
-                key={i}
-                className="relative w-52 h-28"
-                whileHover={{
-                  scale: 1.1,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <div className="relative w-full h-full p-2">
-                  <Image
-                    src={logo}
-                    alt={`logo-${i}`}
-                    fill
-                    className="object-contain border  bg-gradient-to-br from-purple-900 via-zinc-200 to-purple-900 border-purple-500/30 rounded-lg shadow-lg shadow-purple-900/50 hover:shadow-purple-500/70 hover:border-purple-400 transition-all duration-300"
-                    sizes="(max-width: 768px) 120px, 208px"
-                  />
-                </div>
-              </motion.div>
-            ))}
+            <div className="relative w-full h-full">
+              <Image
+                src={logo}
+                alt={`logo-${i}`}
+                fill
+                className="object-contain w-52 h-48 border rounded-2xl bg-gradient-to-br from-purple-900 via-zinc-200 to-purple-900 border-purple-500/30 shadow-lg shadow-purple-900/50"
+                sizes="(max-width: 1000px) 320px, 512px"
+              />
+            </div>
           </motion.div>
-        </div>
+        ))}
+      </motion.div>
+    </div>
 
-        {/* Row 2 - Opposite Direction */}
-        <div className="relative w-full overflow-hidden">
+    {/* Row 2 - Opposite Direction */}
+    <div className="relative w-full overflow-hidden">
+      <motion.div
+        className="flex w-max gap-8"
+        variants={scrollX}
+        animate="right"
+      >
+        {[...logosRow2, ...logosRow2].map((logo, i) => (
           <motion.div
-            className="flex w-max gap-16"
-            variants={scrollX}
-            animate="right"
+            key={i}
+            className="relative w-64 h-44" // Increased size on desktop
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.3 }
+            }}
           >
-            {[...logosRow2, ...logosRow2].map((logo, i) => (
-              <motion.div
-                key={i}
-                className="relative w-52 h-28"
-                whileHover={{
-                  scale: 1.1,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <div className="relative w-full h-full p-2">
-                  <Image
-                    src={logo}
-                    alt={`logo-${i}`}
-                    fill
-                    className="object-contain border bg-gradient-to-br from-purple-900 via-zinc-200 to-purple-900 border-purple-500/30 rounded-lg shadow-lg shadow-purple-900/50 hover:shadow-purple-500/70 hover:border-purple-400 transition-all duration-300"
-                    sizes="(max-width: 768px) 120px, 208px"
-                  />
-                </div>
-              </motion.div>
-            ))}
+            <div className="relative w-full h-full ">
+              <Image
+                src={logo}
+                alt={`logo-${i}`}
+                fill
+                className="object-contain border w-52 h-36 bg-gradient-to-br from-purple-900 via-zinc-200 to-purple-900 border-purple-500/30 rounded-2xl shadow-lg shadow-purple-900/50"
+                sizes="(max-width: 1000px) 320px, 512px"
+              />
+            </div>
           </motion.div>
-        </div>
-      </div>
-    </section>
+        ))}
+      </motion.div>
+    </div>
+  </div>
+</section>
   );
 }

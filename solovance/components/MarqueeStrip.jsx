@@ -1,9 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
 import { FaHeart, FaCoffee, FaRegSmileWink } from 'react-icons/fa'
-import { Mina, Michroma } from "next/font/google"
+import { Mina, Michroma,Oswald} from "next/font/google"
 
-const herofont = Mina({
+const herofont = Oswald({
   weight: "400",
   subsets: ['latin']
 });
@@ -30,9 +30,9 @@ const MarqueeStrip = () => {
   ]
 
   return (
-    <div className="relative bg-[#10002b] border-t border-b border-purple-900/30 py-4 overflow-hidden">
+    <div className="relative bg-[#d038ffd9] mt-12 border-t border-b border-purple-900/30 py-4 overflow-hidden">
       <motion.div 
-        className={`flex ${footer.className}`}
+        className={`flex ${herofont.className}`}
         animate={{
           x: ['0%', '-50%'], 
         }}
@@ -60,7 +60,7 @@ const MarqueeStrip = () => {
       </motion.div>
       
       {/* Invisible duplicate for seamless looping */}
-      <div className={`absolute top-0 left-full  ${footer.className}`}>
+      <div className={`absolute top-0 left-full  ${herofont.className}`}>
         {messages.map((message, i) => (
           <div 
             key={`duplicate-${i}`} 

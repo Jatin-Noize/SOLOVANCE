@@ -58,7 +58,7 @@ const Page = () => {
         <AnimatedQuote/>
         <GettingStarted id="how-it-works" />
         <PricingComponent id="pricing" />
-        <div className='rotate-6 h-36 m-36'><MarqueeStrip/></div>
+        <div className='rotate-6 h-36 '><MarqueeStrip/></div>
         <FAQSection id="faq" />
         <Footer />
       </div>

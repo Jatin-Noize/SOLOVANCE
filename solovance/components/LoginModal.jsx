@@ -10,8 +10,8 @@ const LoginModal = ({ isOpen, onClose }) => {
 
   // Static credentials
   const staticCredentials = {
-    username: 'admin',
-    password: 'solvance123'
+    username: 'admin@solvance.com',
+    password: 'solvance@123'
   };
 
   const handleSubmit = (e) => {
