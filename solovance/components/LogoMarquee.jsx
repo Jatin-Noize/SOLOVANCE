@@ -34,82 +34,99 @@ const scrollX = {
   },
 };
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 50 },
+const fadeInUpWithBlur = {
+  hidden: { 
+    opacity: 0, 
+    y: 50,
+    filter: 'blur(10px)'
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: 'easeOut' },
+    filter: 'blur(0px)',
+    transition: { 
+      duration: 0.8, 
+      ease: 'easeOut',
+      filter: { duration: 1, ease: 'easeOut' }
+    },
   },
+  exit: {
+    opacity: 0,
+    y: -50,
+    filter: 'blur(10px)',
+    transition: { 
+      duration: 0.6,
+      ease: 'easeIn',
+      filter: { duration: 0.5, ease: 'easeIn' }
+    }
+  }
 };
 
 export default function LogoMarquee({ id }) {
   const ref1 = useRef(null);
   const ref2 = useRef(null);
-  const isInView1 = useInView(ref1, { once: true, margin: "-100px" });
-  const isInView2 = useInView(ref2, { once: true, margin: "-100px" });
+  const isInView1 = useInView(ref1, { once: false, margin: "-100px" });
+  const isInView2 = useInView(ref2, { once: false, margin: "-100px" });
 
   return (
-    <section id={id} className="relative overflow-hidden">
-      <div className="py-4 space-y-12 relative z-0">
-        {/* Row 1 */}
-        <motion.div
-          ref={ref1}
-          variants={fadeInUp}
-          initial="hidden"
-          animate={isInView1 ? "visible" : "hidden"}
-          className="relative w-full overflow-hidden"
-        >
-          <motion.div className="flex w-max gap-8" variants={scrollX} animate="left">
-            {[...logosRow1, ...logosRow1].map((logo, i) => (
-              <motion.div
-                key={i}
-                className="relative w-96 h-52"
-                whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
-              >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={logo}
-                    alt={`logo-${i}`}
-                    fill
-                    className="object-scale-down border bg-gradient-to-b from-[#1a0033] to-[#2a004d] rounded-2xl border-purple-900/30 shadow-lg shadow-purple-900/50"
-                    sizes="(max-width: 1000px) 420px, 612px"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+    <section id={id} className="relative overflow-hidden py-16">
+      {/* Row 1 */}
+      <motion.div
+        ref={ref1}
+        variants={fadeInUpWithBlur}
+        initial="hidden"
+        animate={isInView1 ? "visible" : "exit"}
+        className="relative w-full overflow-hidden mb-12"
+      >
+        <motion.div className="flex w-max gap-8" variants={scrollX} animate="left">
+          {[...logosRow1, ...logosRow1].map((logo, i) => (
+            <motion.div
+              key={`row1-${i}`}
+              className="relative w-96 h-52"
+              whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={logo}
+                  alt={`logo-${i}`}
+                  fill
+                  className="object-scale-down border bg-gradient-to-b from-[#1a0033] to-[#2a004d] rounded-2xl border-purple-900/30 shadow-lg shadow-purple-900/50"
+                  sizes="(max-width: 1000px) 420px, 612px"
+                />
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
+      </motion.div>
 
-        {/* Row 2 */}
-        <motion.div
-          ref={ref2}
-          variants={fadeInUp}
-          initial="hidden"
-          animate={isInView2 ? "visible" : "hidden"}
-          className="relative w-full overflow-hidden"
-        >
-          <motion.div className="flex w-max gap-8" variants={scrollX} animate="right">
-            {[...logosRow2, ...logosRow2].map((logo, i) => (
-              <motion.div
-                key={i}
-                className="relative w-96 h-52"
-                whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
-              >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={logo}
-                    alt={`logo-${i}`}
-                    fill
-                    className="object-scale-down border bg-gradient-to-b from-[#1a0033] to-[#2a004d] rounded-2xl border-purple-500/30 shadow-lg shadow-purple-900/50"
-                    sizes="(max-width: 1000px) 420px, 612px"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+      {/* Row 2 */}
+      <motion.div
+        ref={ref2}
+        variants={fadeInUpWithBlur}
+        initial="hidden"
+        animate={isInView2 ? "visible" : "exit"}
+        className="relative w-full overflow-hidden"
+      >
+        <motion.div className="flex w-max gap-8" variants={scrollX} animate="right">
+          {[...logosRow2, ...logosRow2].map((logo, i) => (
+            <motion.div
+              key={`row2-${i}`}
+              className="relative w-96 h-52"
+              whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={logo}
+                  alt={`logo-${i}`}
+                  fill
+                  className="object-scale-down border bg-gradient-to-b from-[#1a0033] to-[#2a004d] rounded-2xl border-purple-500/30 shadow-lg shadow-purple-900/50"
+                  sizes="(max-width: 1000px) 420px, 612px"
+                />
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
