@@ -11,6 +11,7 @@ import GettingStarted from '@/components/GettingStarted';
 import MarqueeStrip from '@/components/MarqueeStrip';
 import PricingComponent from '@/components/PricingComponent';
 import FAQSection from '@/components/FAQSection';
+import Quote from '@/components/Quote';
 
 const Page = () => {
   useEffect(() => {
@@ -57,6 +58,7 @@ const Page = () => {
         <CounterSection/>
         <AnimatedQuote/>
         <GettingStarted id="how-it-works" />
+        <Quote/>
         <PricingComponent id="pricing" />
         <div className='rotate-6 h-36 '><MarqueeStrip/></div>
         <FAQSection id="faq" />
