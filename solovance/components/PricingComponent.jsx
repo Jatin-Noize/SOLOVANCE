@@ -36,7 +36,7 @@ const PricingComponent = ({ id }) => {
       transition: {
         when: 'beforeChildren',
         staggerChildren: 0.2,
-        duration: 0.6,
+        duration: 0.4,
       },
     },
   };
@@ -46,7 +46,7 @@ const PricingComponent = ({ id }) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.4 },
     },
   };
 

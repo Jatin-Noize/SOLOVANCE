@@ -26,7 +26,7 @@ export default function HeroSection() {
   };
   return (
     <main className="min-h-screen text-white flex items-center justify-center px-4">
-      <div className="max-w-3xl sm:text-left text-center">
+      <div className="max-w-3xl  text-center">
         
         {/* Tagline */}
         <motion.div
@@ -45,9 +45,9 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }} // <-- Exit animation
           transition={{ duration: 0.8 }}
-          className={` ${herofont.className}  text-3xl sm:text-left sm:text-5xl font-extrabold leading-tight mb-6`}
+          className={` ${herofont.className}  text-3xl  sm:text-5xl font-extrabold leading-tight mb-6`}
         >
-          The First Choice in <span className={`text-purple-500 sm:text-left ${herofont.className}`}>WHITE LABEL</span> Logo Design for Agencies
+          The First Choice in <span className={`text-purple-500  ${herofont.className}`}>WHITE LABEL</span> Logo Design for Agencies
           <br className="hidden sm:block" />
         </motion.h1>
 

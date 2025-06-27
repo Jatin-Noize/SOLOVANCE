@@ -49,7 +49,7 @@ const GettingStarted = ({ id }) => {
       <motion.section
         ref={ref}
         style={{ opacity, y, scale }}
-        className="py-20 rounded-2xl shadow-lg shadow-purple-400 bg-purple-900/20 backdrop-blur-sm relative overflow-hidden"
+        className="py-20 m-4 rounded-2xl shadow-lg shadow-purple-400 bg-purple-900/20 backdrop-blur-sm relative overflow-hidden"
       >
         {/* Background animation circle */}
         <motion.div
