@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mina, Michroma } from "next/font/google";
+import { Mina, Syne } from "next/font/google";
 import Logo from "../public/SOLVANCE-04.png";
 import { motion } from 'framer-motion';
 
-const herofont = Mina({
+const herofont = Syne({
   weight: "400",
   subsets: ['latin']
 });
 
-const footer = Michroma({
+const footer = Syne({
   weight: "400",
   subsets: ['latin']
 }); 
@@ -105,7 +105,7 @@ export default function Footer() {
                 onClick={() => scrollToSection('how-it-works')}
                 className="text-gray-300 hover:text-white transition-colors duration-200 hover:underline underline-offset-4 decoration-purple-400 text-left w-full py-1"
               >
-                How it works
+                About Us
               </button>
             </motion.li>
             <motion.li variants={itemVariants}>
@@ -139,7 +139,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <motion.div 
         variants={containerVariants}
-        className="max-w-7xl mx-auto border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500"
+        className={`max-w-7xl mx-auto border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 ${footer.className} `}
       >
         <motion.p variants={itemVariants} className="mb-4 md:mb-0">&copy; 2024 Sync Logo. All rights reserved.</motion.p>
         <motion.div variants={containerVariants} className="flex flex-wrap gap-4 justify-center md:justify-end">

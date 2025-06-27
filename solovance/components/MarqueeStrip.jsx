@@ -1,9 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
 import { FaHeart, FaCoffee, FaRegSmileWink } from 'react-icons/fa'
-import { Mina, Michroma,Oswald} from "next/font/google"
+import { Bebas_Neue, Michroma,Oswald} from "next/font/google"
 
-const herofont = Oswald({
+const herofont = Bebas_Neue({
   weight: "400",
   subsets: ['latin']
 });
@@ -16,15 +16,15 @@ const footer = Michroma({
 const MarqueeStrip = () => {
   const messages = [
     {
-      text: "Not happy? Get a 100% refund",
+      text: "100% Custom-Crafted by Creative Designers",
       icon: <FaRegSmileWink className="text-purple-300" />
     },
     {
-      text: "100% handcrafted by coffee fueled designers",
+      text: "Less than 1% of applicants qualify to join our team.",
       icon: <FaCoffee className="text-purple-300" />
     },
     {
-      text: "Less than 1% of applicants join our team",
+      text: "100% Custom-Crafted by Creative Designers",
       icon: <FaHeart className="text-purple-300" />
     }
   ]
@@ -50,11 +50,11 @@ const MarqueeStrip = () => {
             key={i} 
             className="flex items-center shrink-0 px-8"
           >
-            <span className="mr-3 text-2xl">{message.icon}</span>
-            <span className="text-2xl text-purple-100 font-medium tracking-tight">
+            <span className="mr-3 text-5xl">{message.icon}</span>
+            <span className="text-5xl text-purple-100 font-medium tracking-tight">
               {message.text}
             </span>
-            <span className="mx-8 text-purple-900/50 text-2xl">•</span>
+          
           </div>
         ))}
       </motion.div>
@@ -66,11 +66,11 @@ const MarqueeStrip = () => {
             key={`duplicate-${i}`} 
             className="flex items-center shrink-0 px-8 opacity-0"
           >
-            <span className="mr-3 text-2xl">{message.icon}</span>
-            <span className="text-2xl text-purple-100 font-medium tracking-tight">
+            <span className="mr-3 text-5xl">{message.icon}</span>
+            <span className="text-5xl uppercase text-purple-100 font-medium tracking-tight">
               {message.text}
             </span>
-            <span className="mx-8 text-purple-900/50 text-2xl">•</span>
+        
           </div>
         ))}
       </div>

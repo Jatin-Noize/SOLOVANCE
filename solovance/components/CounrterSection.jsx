@@ -1,12 +1,12 @@
 'use client'
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Mina, Oswald } from "next/font/google";
+import { Mina, Oswald,Bebas_Neue, Syne } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 // Fonts
-const herofont = Mina({ weight: "400", subsets: ['latin'] });
-const button = Oswald({ weight: "400", subsets: ['latin'] });
+const herofont = Syne({ weight: "400", subsets: ['latin'] });
+const button = Bebas_Neue({ weight: "400", subsets: ['latin'] });
 
 // CounterItem Component
 const CounterItem = ({ value, suffix = "", title, duration = 2 }) => {
@@ -44,13 +44,13 @@ const CounterItem = ({ value, suffix = "", title, duration = 2 }) => {
         transition: { duration: 0.6, ease: "easeOut" },
       }}
       viewport={{ once: true }}
-      className="text-center p-6 rounded-xl bg-gradient-to-b from-purple-900/30 to-purple-800/20 backdrop-blur-sm border border-purple-700/30"
+      className="text-center p-6 rounded-xl  backdrop-blur-sm  "
     >
-      <div className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-purple-100">
+      <div className={`text-7xl  font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-purple-100 ${button.className} `}>
         {typeof value === "number" ? Math.floor(count) : count}
         {suffix}
       </div>
-      <div className="mt-4 text-lg text-purple-200 font-medium">{title}</div>
+      <div className={`mt-4 text-md text-purple-200 font-medium ${herofont.className} `}>{title}</div>
     </motion.div>
   );
 };
@@ -93,22 +93,24 @@ const CounterSection = () => {
         </motion.div>
 
         <div
-          className={`grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto ${herofont.className}`}
+          className={`grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto `}
         >
           <CounterItem
             value={400}
             suffix="+"
-            title="Logo projects completed in 12+ countries"
+            title="Successfully completed 150+ logo
+projects worldwide in 12+ countries"
           />
           <CounterItem
             value={100}
             suffix="%"
-            title="Designed by coffee fueled designers"
+            title="Crafted by Professional Designers"
           />
           <CounterItem
-            value={48}
+            value={24}
             suffix="H"
-            title="Delivery from the moment you submit your brief"
+            title="Delivery starting once
+your brief is submitted"
           />
         </div>
       </div>

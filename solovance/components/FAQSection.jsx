@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Truculenta, Michroma, Unbounded } from "next/font/google";
+import { Syne, Bebas_Neue, Unbounded } from "next/font/google";
 
-const font = Truculenta({
+const font = Syne({
   weight: "400",
   subsets: ["latin"]
 });
 
-const getfont = Unbounded({
+const getfont = Bebas_Neue({
   weight: "400",
   subsets: ["latin"]
 });
 
-const fontans = Michroma({
+const fontans = Syne({
   weight: "400",
   subsets: ['latin']
 });
@@ -70,10 +70,10 @@ const FAQSection = ({ id }) => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="text-center mb-8 md:mb-12"
         >
-          <h1 className={`text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4 ${getfont.className}`}>
+          <h1 className={`text-6xl md:text-6xl tracking-tight font-bold text-white mb-3 md:mb-4 ${getfont.className}`}>
             FAQ
           </h1>
-          <p className={`text-lg md:text-xl text-purple-200 ${getfont.className}`}>
+          <p className={` md:text-md text-purple-200 ${font.className}`}>
             Get your agency in sync with Sync Logo at the best price.
           </p>
         </motion.div>

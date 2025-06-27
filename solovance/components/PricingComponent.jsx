@@ -4,12 +4,12 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import { RiShoppingBag3Line } from "react-icons/ri";
-import { Exo, Antonio } from 'next/font/google';
-const font1 = Exo({
+import { Bebas_Neue, Syne } from 'next/font/google';
+const font1 = Bebas_Neue({
   weight: "400",
   subsets:['latin']
 })
-const font2 = Antonio({
+const font2 = Syne({
   weight: "400",
   subsets:['latin']
 })
@@ -63,19 +63,19 @@ const PricingComponent = ({ id }) => {
         >
           <motion.h1
             variants={itemVariants}
-            className={`text-4xl font-bold text-white mb-2 ${font1.className} `}
+            className={`text-6xl font-bold tracking-tight text-white mb-2 ${font1.className} `}
           >
-            SIMPLE PRICING
+            SIMPLE<span className='text-purple-400'> PRICING</span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className={`text-lg text-purple-300 mb-8 ${font1.className} `}
+            className={`text-lg text-purple-300 mb-8 ${font2.className} `}
           >
             Get your agency in sync with Sync Logo at the best price.
           </motion.p>
 
-          <motion.div variants={itemVariants}>
+          <motion.div className='' variants={itemVariants}>
             <button className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 mb-12 shadow-md">
               Book a call 
             </button>
@@ -84,18 +84,18 @@ const PricingComponent = ({ id }) => {
           <div className="flex flex-col md:flex-row gap-8 justify-center">
           <motion.div
   variants={itemVariants}
-  className={`flex-1 border border-purple-500/30 rounded-2xl p-8 bg-white backdrop-blur-sm shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 transition-all duration-300 ${font2.className}`}
+  className={`flex-1 border  border-purple-500/30 rounded-2xl p-8 bg-white backdrop-blur-sm shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 transition-all duration-300 ${font1.className}`}
 >
   <div className="flex flex-col h-full">
     <div className="mb-6">
-      <h2 className="text-4xl font-semibold text-left text-black mb-1">LOGO + STYLE GUIDE</h2>
+      <h2 className="text-4xl w-xs font-semibold text-left uppercase flex justify-between text-black mb-1">Logo & Brand Style Guide <span className='text-purple-400'>$385</span></h2>
      
-      <p className="text-zinc-400 mt-6   text-sm">
+      <p className="text-zinc-400 mt-6 text-left  text-sm">
         3 concepts, market research, digital and print files, and an 18-page style guide.
       </p>
     </div>
 
-    <ul className="space-y-3 border-t mb-6 flex-grow">
+    <ul className={`space-y-3 border-t mb-6 flex-grow ${font2.className} `}>
       <li className="flex items-center text-black">
         <CheckIcon />
         Digital Files
@@ -145,18 +145,19 @@ const PricingComponent = ({ id }) => {
 
           <motion.div
   variants={itemVariants}
-  className={`flex-1 rounded-2xl p-8 bg-white backdrop-blur-sm shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 transition-all duration-300 ${font2.className}`}
+  className={`flex-1 rounded-2xl p-8 bg-white backdrop-blur-sm shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 transition-all duration-300 ${font1.className}`}
 >
   <div className="flex flex-col h-full">
     <div className="mb-6">
-      <h2 className="text-4xl text-left  font-semibold text-black mb-1">JUST A LOGO</h2>
+      <h2 className="text-4xl w-xs text-left flex justify-between font-semibold text-black mb-1">3 LOGO CONCEPTS <span className='text-purple-400'>$225</span></h2>
+      
     
-      <p className="text-zinc-400 mt-6  text-md">
+      <p className="text-zinc-400 mt-6 text-left  text-md">
         3 concepts, market research, and digital and print files.
       </p>
     </div>
 
-    <ul className="space-y-3  border-t  mb-6 flex-grow">
+    <ul className={`space-y-3  border-t  mb-6 flex-grow ${font2.className} `}>
       <li className="flex items-center text-black">
         <CheckIcon />
         Digital Files
@@ -179,7 +180,68 @@ const PricingComponent = ({ id }) => {
       </li>
       <li className="flex items-center text-black">
         <CheckIcon />
-        2 days delivery
+        1 day delivery
+      </li>
+      <li className="flex items-center text-black">
+        <CheckIcon />
+        3D mockups
+      </li>
+      <li className="flex items-center text-black">
+        <CheckIcon />
+        18-page style guide
+      </li>
+      <li className="flex items-center text-black">
+        <CheckIcon />
+        100% Money-Back Guarantee
+      </li>
+    </ul>
+
+ <div className="mt-auto">
+  <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center gap-2">
+    <span>Order now</span>
+    <RiShoppingBag3Line className="opacity-0 text-4xl translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
+  </button>
+</div>
+  </div>
+</motion.div>
+<motion.div
+  variants={itemVariants}
+  className={`flex-1 rounded-2xl p-8   bg-white backdrop-blur-sm shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 transition-all duration-300 ${font1.className}`}
+>
+  <div className="flex flex-col h-full">
+    <div className="mb-6">
+      <h2 className="text-4xl w-xs text-left flex justify-between font-semibold text-black mb-1">2 LOGO CONCEPTS <span className='text-purple-400'>$159</span></h2>
+      
+    
+      <p className="text-zinc-400 mt-6 text-left text-md">
+        2 concepts, market research, and digital and print files.
+      </p>
+    </div>
+
+    <ul className={`space-y-3  border-t  mb-6 flex-grow ${font2.className} `}>
+      <li className="flex items-center text-black">
+        <CheckIcon />
+        Digital Files
+      </li>
+      <li className="flex items-center text-black">
+        <CheckIcon />
+        Vector file
+      </li>
+      <li className="flex items-center text-black">
+        <CheckIcon />
+        Source file
+      </li>
+      <li className="flex items-center text-black">
+        <CheckIcon />
+        3 concepts included
+      </li>
+      <li className="flex items-center text-black">
+        <CheckIcon />
+        Unlimited Revisions Included
+      </li>
+      <li className="flex items-center text-black">
+        <CheckIcon />
+        1 day delivery
       </li>
       <li className="flex items-center text-black">
         <CheckIcon />

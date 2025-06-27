@@ -1,9 +1,9 @@
 'use client'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Mina } from 'next/font/google'
+import { Syne, Mina } from 'next/font/google'
 
-const herofont = Mina({
+const herofont = Syne({
   weight: '400',
   subsets: ['latin'],
 })
@@ -19,8 +19,7 @@ const AnimatedQuote = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.9, 1, 1, 0.9])
 
-  const text =
-    "In today's competitive landscape, standing out with a professional and remarkable brand is more important than ever. Solvance's designers, with over 5 years of experience, craft unique, modern logos that blend creativity and professionalism. We ensure quick delivery within 48 hours, starting at $249."
+  const text ="In today’s competitive market, having a professional and memorable brand is more important than ever. At Solvance, our experienced designers with over 5 yearsin the industry create unique, modern logos that balance creativity with professionalism.We guarantee fast delivery within 24 hours, with packages starting at $225."
 
   return (
     <div ref={ref} className="w-full py-20 px-6 flex justify-center">

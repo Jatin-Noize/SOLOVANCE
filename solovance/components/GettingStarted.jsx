@@ -2,14 +2,14 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaPenNib, FaWandMagicSparkles, FaHandHolding } from "react-icons/fa6";
 import { useRef } from 'react';
-import { Exo, Antonio } from 'next/font/google';
+import { Bebas_Neue,Syne, Antonio } from 'next/font/google';
 
-const font1 = Exo({
+const font1 = Bebas_Neue({
   weight: "400",
   subsets: ['latin']
 });
 
-const font2 = Antonio({
+const font2 = Syne({
   weight: "400",
   subsets: ['latin']
 });
@@ -28,28 +28,28 @@ const GettingStarted = ({ id }) => {
 
   const steps = [
     {
-      title: "Choose & Order",
-      description: "Choose a plan, order your logo, and submit your brief using our form of checkout.",
+     
+      description: "Just choose a plan, place your logo orderand submit your brief through our form atcheckout.",
+      icon:  <FaWandMagicSparkles />
+    },
+    {
+     
+      description: "A dedicated designer will be assigned to your project right away",
       icon: <FaPenNib />
     },
     {
-      title: "Designer Assigned",
-      description: "A dedicated designer is assigned to start working on your logo immediately.",
-      icon: <FaWandMagicSparkles />
-    },
-    {
-      title: "Receive Concepts",
-      description: "You will receive three logo concepts in your sign-logo panel for review and approval within 48 hours.",
+      
+      description: "Within 24 hours you’ll receive three custom logo concepts in your Solvance portal for review and feedback",
       icon: <FaHandHolding />
     }
   ];
 
   return (
-    <section id={id} className="relative">
+    <section id={id} className="relative flex  justify-center">
       <motion.section
         ref={ref}
         style={{ opacity, y, scale }}
-        className="py-20 m-4 rounded-2xl shadow-lg shadow-purple-400 bg-purple-900/20 backdrop-blur-sm relative overflow-hidden"
+        className="py-20 m-4 rounded-2xl w-5xl shadow-lg transition-shadow duration-500 hover:shadow-purple-400 bg-purple-900/20 backdrop-blur-sm relative overflow-hidden"
       >
         {/* Background animation circle */}
         <motion.div
@@ -66,9 +66,9 @@ const GettingStarted = ({ id }) => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
             viewport={{ once: true }}
-            className={`text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-white ${font1.className}`}
+            className={`text-6xl md:text-6xl uppercase font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-white ${font1.className}`}
           >
-            GETTING STARTED IS <br /> <span className='text-purple-400'>SUPER EASY!</span>
+            Getting Started Is<br /> <span className='text-purple-400'>Simple!</span>
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">

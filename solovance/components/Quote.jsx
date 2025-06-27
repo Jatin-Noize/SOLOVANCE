@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
-import {Bebas_Neue} from "next/font/google"
+import {Inter} from "next/font/google"
 import Image from 'next/image';
+import quote from "../public/quote.png"
 
-const bebas = Bebas_Neue({
+const bebas = Inter({
   weight: "400",
   subsets: ['latin']
 })
@@ -44,6 +45,7 @@ const Quote = () => {
             <div className="h-0.5 w-8 bg-purple-400 mt-3"></div>
             <p className="text-xs uppercase tracking-widest text-purple-300">Testimonial</p>
           </div>
+          <Image alt="h" className='w-full h-full' src={quote}></Image>
           
           <motion.blockquote 
             className={`text-2xl md:text-3xl font-light text-white mb-6 leading-snug  ${bebas.className}`}
