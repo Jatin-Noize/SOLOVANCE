@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Mina, Syne } from "next/font/google";
 import Logo from "../public/SOLVANCE-04.png";
+import ContactUsForm from './ContactUsForm';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const herofont = Syne({
@@ -26,6 +28,7 @@ const containerVariants = {
   }
 };
 
+
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
@@ -39,6 +42,7 @@ const itemVariants = {
 };
 
 export default function Footer() {
+    const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   // Smooth scroll function
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -87,17 +91,22 @@ export default function Footer() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             variants={itemVariants}
-            className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-colors"
+             onClick={() => setIsContactFormOpen(true)}
+            className={`bg-purple-500 mt-6 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-colors ${footer.className} `}
           >
             Book a call
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
           </motion.button>
+            <ContactUsForm
+        isOpen={isContactFormOpen}
+        onClose={() => setIsContactFormOpen(false)}
+      />
         </motion.div>
 
         {/* Quick links section */}
-        <motion.div className={`${herofont.className}`} variants={itemVariants}>
+        <motion.div className={`${herofont.className} mt-12`} variants={itemVariants}>
           <motion.h3 variants={itemVariants} className="text-white font-semibold mb-4 text-sm md:text-base">Quick links</motion.h3>
           <motion.ul variants={containerVariants} className="space-y-2 text-sm">
             <motion.li variants={itemVariants}>

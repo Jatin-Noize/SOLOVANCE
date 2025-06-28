@@ -23,13 +23,13 @@ const scrollX = {
   left: {
     x: ['0%', '-50%'],
     transition: {
-      x: { repeat: Infinity, repeatType: 'loop', duration: 40, ease: 'linear' },
+      x: { repeat: Infinity, repeatType: 'loop', duration: 80, ease: 'linear' },
     },
   },
   right: {
     x: ['-50%', '0%'],
     transition: {
-      x: { repeat: Infinity, repeatType: 'loop', duration: 40, ease: 'linear' },
+      x: { repeat: Infinity, repeatType: 'loop', duration: 80, ease: 'linear' },
     },
   },
 };
@@ -76,9 +76,9 @@ export default function LogoMarquee({ id }) {
         variants={fadeInUpWithBlur}
         initial="hidden"
         animate={isInView1 ? "visible" : "exit"}
-        className="relative w-full overflow-hidden mb-12"
+        className="relative w-full overflow-hidden mb-6"
       >
-        <motion.div className="flex w-max gap-8" variants={scrollX} animate="left">
+        <motion.div className="flex w-max gap-6" variants={scrollX} animate="left">
           {[...logosRow1, ...logosRow1].map((logo, i) => (
             <motion.div
               key={`row1-${i}`}
@@ -90,7 +90,7 @@ export default function LogoMarquee({ id }) {
                   src={logo}
                   alt={`logo-${i}`}
                   fill
-                  className="object-scale-down border bg-gradient-to-b from-[#1a0033] to-[#2a004d] rounded-2xl border-purple-900/30 shadow-lg shadow-purple-900/50"
+                  className="object-scale-down border bg-gradient-to-b from-[#1a0033] to-[#2a004d] rounded-3xl border-purple-900/30 shadow-lg shadow-purple-900/50"
                   sizes="(max-width: 1000px) 420px, 612px"
                 />
               </div>
@@ -107,7 +107,7 @@ export default function LogoMarquee({ id }) {
         animate={isInView2 ? "visible" : "exit"}
         className="relative w-full overflow-hidden"
       >
-        <motion.div className="flex w-max gap-8" variants={scrollX} animate="right">
+        <motion.div className="flex w-max gap-6" variants={scrollX} animate="right">
           {[...logosRow2, ...logosRow2].map((logo, i) => (
             <motion.div
               key={`row2-${i}`}
@@ -119,7 +119,7 @@ export default function LogoMarquee({ id }) {
                   src={logo}
                   alt={`logo-${i}`}
                   fill
-                  className="object-scale-down border bg-gradient-to-b from-[#1a0033] to-[#2a004d] rounded-2xl border-purple-500/30 shadow-lg shadow-purple-900/50"
+                  className="object-scale-down border bg-gradient-to-b from-[#1a0033] to-[#2a004d] rounded-3xl border-purple-500/30 shadow-lg shadow-purple-900/50"
                   sizes="(max-width: 1000px) 420px, 612px"
                 />
               </div>

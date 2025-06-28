@@ -91,7 +91,7 @@ export default function Navbar() {
           
           <button
             onClick={() => scrollToSection('pricing')}
-            className={`relative w-24  sm:w-28 bg-purple-600 hover:bg-purple-700 transition-colors duration-200 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/20 whitespace-nowrap overflow-hidden ${button.className}`}
+            className={`relative w-24   sm:w-32 bg-purple-600 hover:bg-purple-700 transition-colors duration-200 text-white  sm:px-8 py-2 sm:py-2.5 rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/20 whitespace-nowrap overflow-hidden ${button.className}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             aria-label="View pricing plans"

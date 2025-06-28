@@ -14,6 +14,7 @@ import FAQSection from '@/components/FAQSection';
 import Quote from '@/components/Quote';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import ContactUsForm from '@/components/ContactUsForm';
 
 // Animation variants
 const sectionVariants = {
@@ -145,6 +146,7 @@ const Page = () => {
         
         <AnimatedSection>
           <FAQSection id="faq" />
+         
         </AnimatedSection>
         
         <Footer />

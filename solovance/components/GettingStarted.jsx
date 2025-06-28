@@ -79,7 +79,7 @@ const GettingStarted = ({ id }) => {
                 whileInView={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: index * 0.15 } }}
                 viewport={{ once: true, amount: 0.3 }}
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                className="flex flex-col items-center text-center p-6"
+                className="flex flex-col  items-center text-center p-6"
               >
                 <motion.div
                   className="flex items-center justify-center w-20 h-20 rounded-full bg-purple-900/30 text-purple-400 mb-6 text-4xl"
@@ -90,7 +90,7 @@ const GettingStarted = ({ id }) => {
                 <h3 className={`text-xl font-semibold text-white mb-3 ${font1.className}`}>
                   {step.title}
                 </h3>
-                <p className={`text-purple-200 text-lg ${font2.className}`}>
+                <p className={`text-purple-200 leading-5 text-md ${font2.className}`}>
                   {step.description}
                 </p>
               </motion.div>

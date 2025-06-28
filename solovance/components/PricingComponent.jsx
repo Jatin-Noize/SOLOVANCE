@@ -2,8 +2,12 @@
 
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
+import ContactUsForm from "./ContactUsForm";
+import { RxCrossCircled } from "react-icons/rx";
 import { RiShoppingBag3Line } from "react-icons/ri";
+import { FaMoneyBillTransfer } from "react-icons/fa6";
+import { GiTireIronCross } from "react-icons/gi";
 import { Bebas_Neue, Syne } from 'next/font/google';
 const font1 = Bebas_Neue({
   weight: "400",
@@ -20,6 +24,7 @@ const PricingComponent = ({ id }) => {
     triggerOnce: false,
     threshold: 0.2,
   });
+    const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
   useEffect(() => {
     if (inView) {
@@ -70,15 +75,21 @@ const PricingComponent = ({ id }) => {
 
           <motion.p
             variants={itemVariants}
-            className={`text-lg text-purple-300 mb-8 ${font2.className} `}
+            className={`text-lg text-purple-300 mb-6 ${font2.className} `}
           >
-            Get your agency in sync with Sync Logo at the best price.
+            Get your agency in sync with Solvance <br></br> at the best price.
           </motion.p>
 
           <motion.div className='' variants={itemVariants}>
-            <button className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 mb-12 shadow-md">
+            <button 
+              onClick={() => setIsContactFormOpen(true)} className={`bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 mb-12 shadow-md ${font2.className} `}>
               Book a call 
+              
             </button>
+               <ContactUsForm
+        isOpen={isContactFormOpen}
+        onClose={() => setIsContactFormOpen(false)}
+      />
           </motion.div>
 
           <div className="flex flex-col md:flex-row gap-8 justify-center">
@@ -87,17 +98,17 @@ const PricingComponent = ({ id }) => {
   className={`flex-1 border  border-purple-500/30 rounded-2xl p-8 bg-white backdrop-blur-sm shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 transition-all duration-300 ${font1.className}`}
 >
   <div className="flex flex-col h-full">
-    <div className="mb-6">
-      <h2 className="text-4xl w-xs font-semibold text-left uppercase flex justify-between text-black mb-1">Logo & Brand Style Guide <span className='text-purple-400'>$385</span></h2>
+    <div className="mb-6 border-b-2 pb-6 border-purple-400">
+      <h2 className="text-4xl md:w-xs font-semibold text-left uppercase flex justify-between text-black mb-1">Logo & Brand Style Guide <span className='text-purple-400 mr-4'>$385</span></h2>
      
-      <p className="text-zinc-400 mt-6 text-left  text-sm">
+      <p className={`text-zinc-400 mt-6 text-left  text-sm ${font2.className}`}>
         3 concepts, market research, digital and print files, and an 18-page style guide.
       </p>
     </div>
 
-    <ul className={`space-y-3 border-t mb-6 flex-grow ${font2.className} `}>
+    <ul className={`space-y-3  mb-6 flex-grow ${font2.className} `}>
       <li className="flex items-center text-black">
-        <CheckIcon />
+        <CheckIcon className="" />
         Digital Files
       </li>
       <li className="flex items-center text-black">
@@ -129,12 +140,12 @@ const PricingComponent = ({ id }) => {
         18-page style guide
       </li>
       <li className="flex items-center text-black">
-        <CheckIcon />
+      <div className='h-6 w-6 rounded-full p-1 mr-2 text-white text-center flex justify-center items-center bg-purple-500'><FaMoneyBillTransfer className='w-full h-full' /></div>
         100% Money-Back Guarantee
       </li>
     </ul>
 
-    <div className="mt-auto">
+    <div className="">
   <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center gap-2">
     <span>Order now</span>
     <RiShoppingBag3Line className="opacity-0 text-4xl translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
@@ -145,19 +156,19 @@ const PricingComponent = ({ id }) => {
 
           <motion.div
   variants={itemVariants}
-  className={`flex-1 rounded-2xl p-8 bg-white backdrop-blur-sm shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 transition-all duration-300 ${font1.className}`}
+  className={`flex-1 rounded-2xl  p-8 bg-white backdrop-blur-sm shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 transition-all duration-300 ${font1.className}`}
 >
   <div className="flex flex-col h-full">
-    <div className="mb-6">
-      <h2 className="text-4xl w-xs text-left flex justify-between font-semibold text-black mb-1">3 LOGO CONCEPTS <span className='text-purple-400'>$225</span></h2>
+    <div className="mb-6 border-b-2 pb-6 border-purple-400">
+      <h2 className="text-4xl  text-left flex md:w-xs justify-between font-semibold text-black mb-1">3 LOGO CONCEPTS <span className='text-purple-400 mr-4'>$225</span></h2>
       
     
-      <p className="text-zinc-400 mt-6 text-left  text-md">
+      <p className={`text-zinc-400 mt-6 text-left  text-sm ${font2.className}`}>
         3 concepts, market research, and digital and print files.
       </p>
     </div>
 
-    <ul className={`space-y-3  border-t  mb-6 flex-grow ${font2.className} `}>
+    <ul className={`space-y-3     mb-6 flex-grow ${font2.className} `}>
       <li className="flex items-center text-black">
         <CheckIcon />
         Digital Files
@@ -183,20 +194,20 @@ const PricingComponent = ({ id }) => {
         1 day delivery
       </li>
       <li className="flex items-center text-black">
-        <CheckIcon />
+     <div className='h-6 w-6 flex justify-center items-center bg-zinc-400 text-zinc-700 rounded-full mr-2 font-extrabold p-1'><GiTireIronCross /></div>
         3D mockups
       </li>
       <li className="flex items-center text-black">
-        <CheckIcon />
+    <div className='h-6 w-6 flex justify-center items-center bg-zinc-400 text-zinc-700 rounded-full mr-2 font-extrabold p-1'><GiTireIronCross /></div>
         18-page style guide
       </li>
-      <li className="flex items-center text-black">
-        <CheckIcon />
+           <li className="flex items-center text-black">
+      <div className='h-6 w-6 rounded-full p-1 mr-2 text-white text-center flex justify-center items-center bg-purple-500'><FaMoneyBillTransfer className='w-full h-full' /></div>
         100% Money-Back Guarantee
       </li>
     </ul>
 
- <div className="mt-auto">
+ <div className="m">
   <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center gap-2">
     <span>Order now</span>
     <RiShoppingBag3Line className="opacity-0 text-4xl translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
@@ -206,19 +217,19 @@ const PricingComponent = ({ id }) => {
 </motion.div>
 <motion.div
   variants={itemVariants}
-  className={`flex-1 rounded-2xl p-8   bg-white backdrop-blur-sm shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 transition-all duration-300 ${font1.className}`}
+  className={`flex-1 rounded-2xl p-8    bg-white backdrop-blur-sm shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 transition-all duration-300 ${font1.className}`}
 >
   <div className="flex flex-col h-full">
-    <div className="mb-6">
-      <h2 className="text-4xl w-xs text-left flex justify-between font-semibold text-black mb-1">2 LOGO CONCEPTS <span className='text-purple-400'>$159</span></h2>
+    <div className="mb-6 border-b-2 pb-6 border-purple-400">
+      <h2 className="text-4xl  text-left flex justify-between md:w-xs font-semibold text-black mb-1">2 LOGO CONCEPTS <span className='text-purple-400 mr-4'>$159</span></h2>
       
     
-      <p className="text-zinc-400 mt-6 text-left text-md">
+      <p className={`text-zinc-400 mt-6 text-left  text-sm ${font2.className}`}>
         2 concepts, market research, and digital and print files.
       </p>
     </div>
 
-    <ul className={`space-y-3  border-t  mb-6 flex-grow ${font2.className} `}>
+    <ul className={`space-y-3  bo-  mb-6 flex-grow ${font2.className} `}>
       <li className="flex items-center text-black">
         <CheckIcon />
         Digital Files
@@ -244,15 +255,15 @@ const PricingComponent = ({ id }) => {
         1 day delivery
       </li>
       <li className="flex items-center text-black">
-        <CheckIcon />
+    <div className='h-6 w-6 flex justify-center items-center bg-zinc-400 text-zinc-700 rounded-full mr-2 font-extrabold p-1'><GiTireIronCross /></div>
         3D mockups
       </li>
       <li className="flex items-center text-black">
-        <CheckIcon />
+     <div className='h-6 w-6 flex justify-center items-center bg-zinc-400 text-zinc-700 rounded-full mr-2 font-extrabold p-1'><GiTireIronCross /></div>
         18-page style guide
       </li>
-      <li className="flex items-center text-black">
-        <CheckIcon />
+           <li className="flex items-center text-black">
+      <div className='h-6 w-6 rounded-full p-1 mr-2 text-white text-center flex justify-center items-center bg-purple-500'><FaMoneyBillTransfer className='w-full h-full' /></div>
         100% Money-Back Guarantee
       </li>
     </ul>
@@ -275,7 +286,7 @@ const PricingComponent = ({ id }) => {
 // Reusable check icon
 const CheckIcon = () => (
   <svg
-    className="h-5 w-5 text-purple-500 mr-2"
+    className="h-6 w-6 mr-2 p-1  bg-black rounded-full text-zinc-100 "
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
