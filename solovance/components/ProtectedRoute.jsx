@@ -1,5 +1,5 @@
 'use client'
-import { useAuth } from './auth-context';
+import { useAuth } from '../app/auth-context';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
@@ -8,9 +8,8 @@ export default function ProtectedRoute({ children }) {
   const router = useRouter();
 
   useEffect(() => {
-    // Check localStorage for auth state (helps with page refresh)
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-    if (!isAuthenticated && !user) {
+    if (!isAuthenticated) {
       router.push('/');
     }
   }, [user, router]);

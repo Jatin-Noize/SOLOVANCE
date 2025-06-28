@@ -1,9 +1,31 @@
 'use client'
 import { motion } from 'framer-motion';
-import { Lock, LogOut } from 'lucide-react';
+import { Lock, LogOut, Mail, Phone, MessageSquare, User } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function AdminPanel() {
+  const [submissions, setSubmissions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchSubmissions = async () => {
+      try {
+        const response = await axios.get('https://solvance.onrender.com/api/contact');
+        setSubmissions(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+        console.error('Error fetching submissions:', err);
+      }
+    };
+
+    fetchSubmissions();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 to-black">
       <div className="container mx-auto px-4 py-12">
@@ -26,46 +48,100 @@ export default function AdminPanel() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Admin Cards */}
-            {[
-              { title: 'Total Orders', value: '24', color: 'bg-purple-600' },
-              { title: 'Pending Designs', value: '5', color: 'bg-amber-600' },
-              { title: 'Completed Projects', value: '19', color: 'bg-emerald-600' },
-              { title: 'Revenue', value: '$4,820', color: 'bg-blue-600' },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -5 }}
-                className={`${item.color} p-6 rounded-lg shadow-lg`}
-              >
-                <h3 className="text-lg font-medium text-white/90">{item.title}</h3>
-                <p className="text-3xl font-bold text-white mt-2">{item.value}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold text-white mb-4">Recent Activity</h2>
-            <div className="space-y-4">
-              {[
-                'New order received from client #2456',
-                'Revision requested for project "Nexa"',
-                'Design approved for "Voltron" logo',
-                'Payment received from client #2451'
-              ].map((activity, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-4 bg-purple-800/30 rounded-lg border border-purple-700/20"
-                >
-                  <p className="text-purple-100">{activity}</p>
-                </motion.div>
-              ))}
+          {loading ? (
+            <div className="flex justify-center items-center h-64">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
             </div>
-          </div>
+          ) : error ? (
+            <div className="p-4 bg-red-900/30 rounded-lg border border-red-700/30 text-red-300">
+              Error loading submissions: {error}
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-purple-600 p-6 rounded-lg shadow-lg"
+                >
+                  <h3 className="text-lg font-medium text-white/90">Total Submissions</h3>
+                  <p className="text-3xl font-bold text-white mt-2">{submissions.length}</p>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-blue-600 p-6 rounded-lg shadow-lg"
+                >
+                  <h3 className="text-lg font-medium text-white/90">Recent Activity</h3>
+                  <p className="text-3xl font-bold text-white mt-2">
+                    {submissions.length > 0 ? 
+                      new Date(submissions[0].createdAt).toLocaleDateString() : 
+                      'No data'}
+                  </p>
+                </motion.div>
+              </div>
+
+              <div className="mt-8">
+                <h2 className="text-xl font-semibold text-white mb-4">Contact Form Submissions</h2>
+                <div className="space-y-4">
+                  {submissions.length > 0 ? (
+                    submissions.map((submission, index) => (
+                      <motion.div
+                        key={submission._id || index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="p-4 bg-purple-800/30 rounded-lg border border-purple-700/20"
+                      >
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="flex items-start gap-3">
+                            <User className="text-purple-400 mt-1 flex-shrink-0" size={18} />
+                            <div>
+                              <p className="text-sm text-purple-300">Name</p>
+                              <p className="text-white">{submission.name}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <Mail className="text-purple-400 mt-1 flex-shrink-0" size={18} />
+                            <div>
+                              <p className="text-sm text-purple-300">Email</p>
+                              <p className="text-white">{submission.email}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <Phone className="text-purple-400 mt-1 flex-shrink-0" size={18} />
+                            <div>
+                              <p className="text-sm text-purple-300">Phone</p>
+                              <p className="text-white">{submission.phone || 'Not provided'}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <MessageSquare className="text-purple-400 mt-1 flex-shrink-0" size={18} />
+                            <div>
+                              <p className="text-sm text-purple-300">Message</p>
+                              <p className="text-white">{submission.message}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="mt-3 pt-3 border-t border-purple-700/20">
+                          <p className="text-xs text-purple-400">
+                            Submitted on: {new Date(submission.createdAt).toLocaleString()}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))
+                  ) : (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="p-4 bg-purple-800/30 rounded-lg border border-purple-700/20 text-center"
+                    >
+                      <p className="text-purple-300">No submissions found</p>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
         </motion.div>
       </div>
     </div>
