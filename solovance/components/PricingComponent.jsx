@@ -68,16 +68,16 @@ const PricingComponent = ({ id }) => {
         >
           <motion.h1
             variants={itemVariants}
-            className={`text-6xl font-bold tracking-tight text-white mb-2 ${font1.className} `}
+            className={`text-6xl font-bold tracking-tight text-white mb ${font1.className} `}
           >
             SIMPLE<span className='text-purple-400'> PRICING</span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className={`text-lg text-purple-300 mb-6 ${font2.className} `}
+            className={`text-lg text-purple-300 mb-3 ${font2.className} `}
           >
-            Get your agency in sync with Solvance <br></br> at the best price.
+           Get your agency’s logo designed <br/>by Solvance at the best price
           </motion.p>
 
           <motion.div className='' variants={itemVariants}>
@@ -145,10 +145,10 @@ const PricingComponent = ({ id }) => {
       </li>
     </ul>
 
-    <div className="">
-  <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center gap-2">
-    <span>Order now</span>
-    <RiShoppingBag3Line className="opacity-0 text-4xl translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
+<div className={`relative ${font2.className} `}>
+  <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center">
+    <span className="group-hover:opacity-0 group-hover:scale-90 flex gap-4 items-center transition-all duration-300">Order now <RiShoppingBag3Line className='text-2xl'/></span>
+    <RiShoppingBag3Line className="absolute text-4xl opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300" />
   </button>
 </div>
   </div>
@@ -160,7 +160,7 @@ const PricingComponent = ({ id }) => {
 >
   <div className="flex flex-col h-full">
     <div className="mb-6 border-b-2 pb-6 border-purple-400">
-      <h2 className="text-4xl  text-left flex md:w-xs justify-between font-semibold text-black mb-1">3 LOGO CONCEPTS <span className='text-purple-400 mr-4'>$225</span></h2>
+      <h2 className="text-4xl  text-left flex md:w-xs justify-between font-semibold text-black mb-1">3 LOGO CONCEPTS <br /> <br /> <span className='text-purple-400 mr-4'>$225</span></h2>
       
     
       <p className={`text-zinc-400 mt-6 text-left  text-sm ${font2.className}`}>
@@ -207,10 +207,10 @@ const PricingComponent = ({ id }) => {
       </li>
     </ul>
 
- <div className="m">
-  <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center gap-2">
-    <span>Order now</span>
-    <RiShoppingBag3Line className="opacity-0 text-4xl translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
+<div className={`relative ${font2.className} `}>
+  <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center">
+  <span className="group-hover:opacity-0 group-hover:scale-90 flex gap-4 items-center transition-all duration-300">Order now <RiShoppingBag3Line className='text-2xl'/></span>
+    <RiShoppingBag3Line className="absolute text-4xl opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300" />
   </button>
 </div>
   </div>
@@ -221,7 +221,7 @@ const PricingComponent = ({ id }) => {
 >
   <div className="flex flex-col h-full">
     <div className="mb-6 border-b-2 pb-6 border-purple-400">
-      <h2 className="text-4xl  text-left flex justify-between md:w-xs font-semibold text-black mb-1">2 LOGO CONCEPTS <span className='text-purple-400 mr-4'>$159</span></h2>
+      <h2 className="text-4xl  text-left flex justify-between md:w-xs font-semibold text-black mb-1">2 LOGO CONCEPTS <br /><br /> <span className='text-purple-400 mr-4'>$159</span></h2>
       
     
       <p className={`text-zinc-400 mt-6 text-left  text-sm ${font2.className}`}>
@@ -267,11 +267,10 @@ const PricingComponent = ({ id }) => {
         100% Money-Back Guarantee
       </li>
     </ul>
-
- <div className="mt-auto">
-  <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center gap-2">
-    <span>Order now</span>
-    <RiShoppingBag3Line className="opacity-0 text-4xl translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
+<div className={`relative ${font2.className} `}>
+  <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center">
+  <span className="group-hover:opacity-0 group-hover:scale-90 flex gap-4 items-center transition-all duration-300">Order now <RiShoppingBag3Line className='text-2xl'/></span>
+    <RiShoppingBag3Line className="absolute text-4xl opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300" />
   </button>
 </div>
   </div>

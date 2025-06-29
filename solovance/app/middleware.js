@@ -1,17 +1,16 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {
-  const authToken = request.cookies.get('auth-token')?.value;
-  const isAuthenticated = request.cookies.get('isAuthenticated')?.value === 'true';
+  const url = request.nextUrl.clone();
+  const authToken = request.cookies.get('admin-auth');
 
-  if (request.nextUrl.pathname.startsWith('/admin') && !isAuthenticated) {
-    const absoluteURL = new URL('/', request.nextUrl.origin);
-    return NextResponse.redirect(absoluteURL);
+  // Protect admin routes
+  if (request.nextUrl.pathname.startsWith('/admin')) {
+    if (!authToken) {
+      url.pathname = '/';
+      return NextResponse.redirect(url);
+    }
   }
 
   return NextResponse.next();
 }
-
-export const config = {
-  matcher: ['/admin/:path*'],
-};

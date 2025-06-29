@@ -3,39 +3,30 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+export const AuthProvider = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Check for auth state in localStorage when app loads
-    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-    if (isAuthenticated) {
-      setUser({ username: 'admin' });
-    }
+    // Check if user is authenticated on initial load
+    const authStatus = localStorage.getItem('admin-auth');
+    setIsAuthenticated(authStatus === 'true');
   }, []);
 
-  const login = (username, password) => {
-    // Static credentials - replace with your actual validation
-    if (username === 'admin@solvance.com' && password === 'solvance@123') {
-      setUser({ username });
-      localStorage.setItem('isAuthenticated', 'true');
-      return true;
-    }
-    return false;
+  const login = () => {
+    localStorage.setItem('admin-auth', 'true');
+    setIsAuthenticated(true);
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('admin-auth');
+    setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export const useAuth = () => useContext(AuthContext);

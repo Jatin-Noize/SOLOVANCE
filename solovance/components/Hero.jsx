@@ -67,7 +67,7 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className={`${hero.className} text-zinc-400 text-xl`}
+          className={`${hero.className} mb-12 text-zinc-400 text-xl`}
         >
           We deliver professionally hand-designed white<br/> label logos within 1 day all at a fixed price
         </motion.p>
@@ -82,13 +82,13 @@ export default function HeroSection() {
         >
           <div
             href="/pricing"
-            className={`relative w-36 h-12  bg-purple-600 hover:bg-purple-700 transition-colors duration-200 text-white rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/20 whitespace-nowrap overflow-hidden ${button.className}`}
+            className={`relative w-42 h-12  bg-purple-600 hover:bg-purple-700 transition-colors duration-200 text-white rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/20 whitespace-nowrap overflow-hidden ${button.className}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <button
               onClick={() => scrollToSection('pricing')}
-              className={`flex mx-4 items-center text-lg gap-2 transition-all duration-200 ${
+              className={`flex  items-center text-lg gap-2  transition-all duration-200 ${
                 isHovered ? "opacity-0 translate-x-[-20px]" : " opacity-100"
               }`}
             >

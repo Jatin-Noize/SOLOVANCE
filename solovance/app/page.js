@@ -114,9 +114,16 @@ const Page = () => {
         </div>
 
         {/* Animated Sections */}
-        <AnimatedSection>
-          <LogoMarquee id="portfolio" />
-        </AnimatedSection>
+
+
+  
+  {/* Your existing content */}
+  <AnimatedSection>
+      {/* Radial gradient vignette overlay */}
+ 
+    <LogoMarquee id="portfolio" />
+  </AnimatedSection>
+
         
         <AnimatedSection>
           <CounterSection />

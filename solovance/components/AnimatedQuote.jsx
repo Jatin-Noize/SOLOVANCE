@@ -40,43 +40,43 @@ const AnimatedQuote = () => {
         className={`max-w-3xl border border-purple-300/30 rounded-2xl p-6 md:p-8 text-center backdrop-blur-sm bg-purple-900/20 shadow-lg shadow-purple-900/20 ${herofont.className}`}
         style={{ opacity, scale }}
       >
-        <motion.div className="text-xl md:text-2xl font-medium leading-snug md:leading-normal text-white flex flex-wrap justify-center gap-x-1 gap-y-0">
-          {text.split(' ').map((word, index) => (
-            <motion.span
-              key={`word-${index}`}
-              className="inline-block"
-              initial={{ 
-                opacity: 0, 
-                y: scrollDirection === 'down' ? 20 : -20 
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                transition: { 
-                  delay: index * 0.02, 
-                  duration: 0.3,
-                  ease: "easeOut"
-                },
-              }}
-              exit={{
-                opacity: 0,
-                y: scrollDirection === 'down' ? -20 : 20,
-                transition: {
-                  duration: 0.2
-                }
-              }}
-              viewport={{ once: false, margin: "0px 0px -50px 0px" }}
-              whileHover={{
-                scale: 1.05,
-                color: '#fff',
-                textShadow: '0 0 6px rgba(192, 132, 252, 0.8)',
-                transition: { duration: 0.15 },
-              }}
-            >
-              {word + '\u00A0'}
-            </motion.span>
-          ))}
-        </motion.div>
+       <motion.div className="text-xl md:text-2xl font-medium text-white flex flex-wrap justify-center gap-x-0.5 leading-tight">
+  {text.split(' ').map((word, index) => (
+    <motion.span
+      key={`word-${index}`}
+      className="inline-block"
+      initial={{ 
+        opacity: 0, 
+        y: scrollDirection === 'down' ? 20 : -20 
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        transition: { 
+          delay: index * 0.02, 
+          duration: 0.3,
+          ease: "easeOut"
+        },
+      }}
+      exit={{
+        opacity: 0,
+        y: scrollDirection === 'down' ? -20 : 20,
+        transition: {
+          duration: 0.2
+        }
+      }}
+      viewport={{ once: false, margin: "0px 0px -50px 0px" }}
+      whileHover={{
+        scale: 1.05,
+        color: '#fff',
+        textShadow: '0 0 6px rgba(192, 132, 252, 0.8)',
+        transition: { duration: 0.15 },
+      }}
+    >
+      {word + (index < text.split(' ').length - 1 ? '\u00A0' : '')}
+    </motion.span>
+  ))}
+</motion.div>
       </motion.div>
     </div>
   )

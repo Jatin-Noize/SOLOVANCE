@@ -2,13 +2,16 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useState } from 'react';
+import { useAuth } from '../app/auth-context';
+import { useRouter } from 'next/navigation';
 
 const LoginModal = ({ isOpen, onClose }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const { login } = useAuth();
+  const router = useRouter();
 
-  // Static credentials
   const staticCredentials = {
     username: 'admin@solvance.com',
     password: 'solvance@123'
@@ -17,8 +20,8 @@ const LoginModal = ({ isOpen, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === staticCredentials.username && password === staticCredentials.password) {
-      // Successful login - redirect to admin panel
-      window.location.href = '/admin';
+      login(); // Set authentication state
+      router.push('/admin'); // Use Next.js router for navigation
     } else {
       setError('Invalid credentials. Please try again.');
     }

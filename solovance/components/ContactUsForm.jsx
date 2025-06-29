@@ -2,8 +2,15 @@
 
 import { useState } from "react";
 import axios from "axios";
+import { Syne } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSend, FiX, FiMail, FiPhone, FiUser, FiMessageSquare } from "react-icons/fi";
+
+
+const font = Syne({
+  subsets: ["latin"],
+  weight: "400"
+})
 
 const ContactUsForm = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -55,41 +62,41 @@ const ContactUsForm = ({ isOpen, onClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) return;
-    
-    setIsSubmitting(true);
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      
+      if (!validateForm()) return;
+      
+      setIsSubmitting(true);
 
-    try {
-      const response = await axios.post(
-        "https://solvance.onrender.com/api/contact/create",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
+      try {
+        const response = await axios.post(
+          "https://solvance.onrender.com/api/contact/create",
+          formData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.status === 200 || response.status === 201) {
+          setSubmitStatus({
+            success: true,
+            message: "Thank you for contacting us! We'll get back to you soon.",
+          });
+          setFormData({ name: "", email: "", message: "", phone: "" });
         }
-      );
-
-      if (response.status === 200 || response.status === 201) {
+      } catch (error) {
+        console.error("Error submitting form:", error);
         setSubmitStatus({
-          success: true,
-          message: "Thank you for contacting us! We'll get back to you soon.",
+          success: false,
+          message: "Something went wrong. Please try again later.",
         });
-        setFormData({ name: "", email: "", message: "", phone: "" });
+      } finally {
+        setIsSubmitting(false);
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setSubmitStatus({
-        success: false,
-        message: "Something went wrong. Please try again later.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    };
 
   // Animation variants
   const backdropVariants = {
@@ -163,7 +170,7 @@ const ContactUsForm = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${font.className} `}
           initial="hidden"
           animate="visible"
           exit="hidden"

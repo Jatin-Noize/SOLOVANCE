@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion';
-import { Lock, LogOut, Mail, Phone, MessageSquare, User } from 'lucide-react';
+import { Lock, LogOut, Mail, Phone, MessageSquare, User, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -9,22 +9,38 @@ export default function AdminPanel() {
   const [submissions, setSubmissions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [deletingId, setDeletingId] = useState(null);
 
   useEffect(() => {
-    const fetchSubmissions = async () => {
-      try {
-        const response = await axios.get('https://solvance.onrender.com/api/contact');
-        setSubmissions(response.data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-        console.error('Error fetching submissions:', err);
-      }
-    };
-
     fetchSubmissions();
   }, []);
+
+  const fetchSubmissions = async () => {
+    try {
+      const response = await axios.get('https://solvance.onrender.com/api/contact');
+      setSubmissions(response.data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+      console.error('Error fetching submissions:', err);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this submission?')) return;
+    
+    setDeletingId(id);
+    try {
+      await axios.delete(`https://solvance.onrender.com/api/contact/${id}`);
+      setSubmissions(submissions.filter(sub => sub._id !== id));
+    } catch (err) {
+      console.error('Error deleting submission:', err);
+      alert('Failed to delete submission');
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 to-black">
@@ -55,6 +71,12 @@ export default function AdminPanel() {
           ) : error ? (
             <div className="p-4 bg-red-900/30 rounded-lg border border-red-700/30 text-red-300">
               Error loading submissions: {error}
+              <button 
+                onClick={fetchSubmissions}
+                className="mt-2 px-3 py-1 bg-red-700/50 hover:bg-red-700 rounded text-sm"
+              >
+                Retry
+              </button>
             </div>
           ) : (
             <>
@@ -81,16 +103,23 @@ export default function AdminPanel() {
               </div>
 
               <div className="mt-8">
-                <h2 className="text-xl font-semibold text-white mb-4">Contact Form Submissions</h2>
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-semibold text-white">Contact Form Submissions</h2>
+                  <button 
+                    onClick={fetchSubmissions}
+                    className="px-3 py-1 text-sm bg-purple-700/50 hover:bg-purple-700 rounded"
+                  >
+                    Refresh
+                  </button>
+                </div>
                 <div className="space-y-4">
                   {submissions.length > 0 ? (
-                    submissions.map((submission, index) => (
+                    submissions.map((submission) => (
                       <motion.div
-                        key={submission._id || index}
+                        key={submission._id}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="p-4 bg-purple-800/30 rounded-lg border border-purple-700/20"
+                        className="p-4 bg-purple-800/30 rounded-lg border border-purple-700/20 relative"
                       >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="flex items-start gap-3">
@@ -122,10 +151,24 @@ export default function AdminPanel() {
                             </div>
                           </div>
                         </div>
-                        <div className="mt-3 pt-3 border-t border-purple-700/20">
+                        <div className="mt-3 pt-3 border-t border-purple-700/20 flex justify-between items-center">
                           <p className="text-xs text-purple-400">
                             Submitted on: {new Date(submission.createdAt).toLocaleString()}
                           </p>
+                          <button
+                            onClick={() => handleDelete(submission._id)}
+                            disabled={deletingId === submission._id}
+                            className="text-red-400 hover:text-red-300 transition-colors flex items-center gap-1 text-sm"
+                          >
+                            {deletingId === submission._id ? (
+                              <div className="animate-spin h-4 w-4 border-t-2 border-b-2 border-red-400 rounded-full"></div>
+                            ) : (
+                              <>
+                                <Trash2 size={16} />
+                                Delete
+                              </>
+                            )}
+                          </button>
                         </div>
                       </motion.div>
                     ))

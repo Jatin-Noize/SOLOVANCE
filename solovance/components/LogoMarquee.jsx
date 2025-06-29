@@ -83,7 +83,7 @@ export default function LogoMarquee({ id }) {
             <motion.div
               key={`row1-${i}`}
               className="relative w-96 h-52"
-              whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+          
             >
               <div className="relative w-full h-full">
                 <Image
@@ -112,7 +112,7 @@ export default function LogoMarquee({ id }) {
             <motion.div
               key={`row2-${i}`}
               className="relative w-96 h-52"
-              whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+             
             >
               <div className="relative w-full h-full">
                 <Image
