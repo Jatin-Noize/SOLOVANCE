@@ -2,18 +2,19 @@
 
 import { useState } from "react";
 import axios from "axios";
+import emailjs from '@emailjs/browser';
 import { Syne } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSend, FiX, FiMail, FiPhone, FiUser, FiMessageSquare } from "react-icons/fi";
-
 
 const font = Syne({
   subsets: ["latin"],
   weight: "400"
 })
 
+
 const ContactUsForm = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
+ const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
@@ -43,7 +44,7 @@ const ContactUsForm = ({ isOpen, onClose }) => {
     }
   };
 
-  const validateForm = () => {
+ const validateForm = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
@@ -62,15 +63,42 @@ const ContactUsForm = ({ isOpen, onClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
+  const sendEmail = async () => {
+    // Initialize EmailJS with your public key
+     emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "bMTNMQD1QdXIMPqVj");
+    
+    try {
+      const response = await emailjs.send(
+    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_kwl6qh6",
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_norrszm",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone_number: formData.phone || 'Not provided',
+          message: formData.message,
+        }
+      );
       
-      if (!validateForm()) return;
-      
-      setIsSubmitting(true);
+      console.log('Email sent successfully:', response);
+      return true;
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      return false;
+    }
+  };
 
-      try {
-        const response = await axios.post(
+ 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+
+    try {
+      // Send to both your API and EmailJS
+      const [apiResponse, emailResult] = await Promise.all([
+        axios.post(
           "https://solvance.onrender.com/api/contact/create",
           formData,
           {
@@ -78,26 +106,37 @@ const ContactUsForm = ({ isOpen, onClose }) => {
               "Content-Type": "application/json",
             },
           }
-        );
+        ),
+        sendEmail()
+      ]);
 
-        if (response.status === 200 || response.status === 201) {
+      // Check if both succeeded
+      if (apiResponse.status === 200 || apiResponse.status === 201) {
+        if (emailResult.success) {
           setSubmitStatus({
             success: true,
-            message: "Thank you for contacting us! We'll get back to you soon.",
+            message: "Thank you! We've received your message and sent a confirmation email.",
           });
-          setFormData({ name: "", email: "", message: "", phone: "" });
+        } else {
+          setSubmitStatus({
+            success: true,
+            message: "We've received your message, but there was an issue sending the confirmation email.",
+          });
         }
-      } catch (error) {
-        console.error("Error submitting form:", error);
-        setSubmitStatus({
-          success: false,
-          message: "Something went wrong. Please try again later.",
-        });
-      } finally {
-        setIsSubmitting(false);
+        setFormData({ name: "", email: "", message: "", phone: "" });
+      } else {
+        throw new Error("API submission failed");
       }
-    };
-
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus({
+        success: false,
+        message: error.message || "Something went wrong. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   // Animation variants
   const backdropVariants = {
     hidden: { opacity: 0 },

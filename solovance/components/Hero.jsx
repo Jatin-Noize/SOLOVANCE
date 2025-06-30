@@ -36,30 +36,32 @@ export default function HeroSection() {
   };
   
   return (
-    <main className="min-h-screen text-white flex items-center justify-center px-4">
-      <div className="max-w-3xl mt-36 text-center space-y-8"> {/* Changed to space-y-8 for equal spacing */}
+    <main className="min-h-screen text-white flex items-center justify-center px-4 sm:px-6">
+      <div className="max-w-3xl mt-36 text-center sm:text-left space-y-8"> {/* Added sm:text-left */}
         
         {/* Tagline */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.6 }}
-          className={`inline-block text-md font-semibold bg-white/10 px-4 py-2 rounded-full ${button.className}`}
-        >
-          Three concepts in one days
-        </motion.div>
-<motion.h1
-  initial={{ opacity: 0, y: 20 }}
+   {/* Tagline */}
+<motion.div
+  initial={{ opacity: 0, y: -20 }}
   animate={{ opacity: 1, y: 0 }}
-  exit={{ opacity: 0, y: 20 }}
-  transition={{ duration: 0.8 }}
-  className={`${herofont.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-extrabold  sm:leading-[0.95]  sm:text-center`}
+  exit={{ opacity: 0, y: -20 }}
+  transition={{ duration: 0.6 }}
+  className={`mx-auto max-w-fit text-md font-semibold bg-white/10 px-4 py-2 rounded-full ${button.className}`}
 >
-  The First Choice in{' '}
-  <span className={`text-purple-500 ${herofont.className}`}>WHITE LABEL</span>{' '}
-  <span className="block sm:inline mt-[-0.2em] sm:mt-0">Logo Design for Agencies</span>
-</motion.h1>
+  Three concepts in one day
+</motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.8 }}
+          className={`${herofont.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-extrabold sm:leading-[0.95] text-left sm:text-center`} 
+        >
+          The First Choice in{' '}
+          <span className={`text-purple-500 ${herofont.className}`}>WHITE LABEL</span>{' '}
+          <span className="block sm:inline mt-[-0.2em] sm:mt-0">Logo Design for Agencies</span>
+        </motion.h1>
 
         {/* Description */}
         <motion.p
@@ -67,18 +69,18 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className={`${hero.className} mb-12 text-zinc-400 text-xl`}
+          className={`${hero.className} mb-12 text-zinc-400 text-xl text-left sm:text-center`} 
         >
-          We deliver professionally hand-designed white<br/> label logos within 1 day all at a fixed price
+          We deliver professionally hand-designed white<br className="sm:hidden"/> label logos within 1 day all at a fixed price
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons - Changed to justify-start on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="flex justify-center gap-4 " // Added pt-2 for slight top padding
+          className="flex justify-start sm:justify-center gap-4" 
         >
           <div
             href="/pricing"
