@@ -88,55 +88,74 @@ const ContactUsForm = ({ isOpen, onClose }) => {
   };
 
  
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Check rate limit in localStorage
+    const lastSubmissionTime = localStorage.getItem('lastContactSubmission');
+    if (lastSubmissionTime) {
+        const currentTime = Date.now();
+        const timeDiff = currentTime - parseInt(lastSubmissionTime, 10);
+        const oneHour = 60 * 60 * 1000; // milliseconds in an hour
+        
+        if (timeDiff < oneHour) {
+            setSubmitStatus({
+                success: false,
+                message: "Please wait at least one hour before submitting another message.",
+            });
+            return;
+        }
+    }
+
     if (!validateForm()) return;
     
     setIsSubmitting(true);
 
     try {
-      // Send to both your API and EmailJS
-      const [apiResponse, emailResult] = await Promise.all([
-        axios.post(
-          "https://solvance.onrender.com/api/contact/create",
-          formData,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        ),
-        sendEmail()
-      ]);
+        // Store submission time in localStorage
+        localStorage.setItem('lastContactSubmission', Date.now().toString());
 
-      // Check if both succeeded
-      if (apiResponse.status === 200 || apiResponse.status === 201) {
-        if (emailResult.success) {
-          setSubmitStatus({
-            success: true,
-            message: "Thank you! We've received your message and sent a confirmation email.",
-          });
+        const [apiResponse, emailResult] = await Promise.all([
+            axios.post(
+                "https://solvance.onrender.com/api/contact/create",
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            ),
+            sendEmail()
+        ]);
+
+        if (apiResponse.status === 200 || apiResponse.status === 201) {
+            if (emailResult.success) {
+                setSubmitStatus({
+                    success: true,
+                    message: "Thank you! We've received your message and sent a confirmation email.",
+                });
+            } else {
+                setSubmitStatus({
+                    success: true,
+                    message: "We've received your message, but there was an issue sending the confirmation email.",
+                });
+            }
+            setFormData({ name: "", email: "", message: "", phone: "" });
         } else {
-          setSubmitStatus({
-            success: true,
-            message: "We've received your message, but there was an issue sending the confirmation email.",
-          });
+            throw new Error("API submission failed");
         }
-        setFormData({ name: "", email: "", message: "", phone: "" });
-      } else {
-        throw new Error("API submission failed");
-      }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      setSubmitStatus({
-        success: false,
-        message: error.message || "Something went wrong. Please try again later.",
-      });
+        console.error("Error submitting form:", error);
+        // Remove the stored time if submission failed
+        localStorage.removeItem('lastContactSubmission');
+        setSubmitStatus({
+            success: false,
+            message: error.message || "Something went wrong. Please try again later.",
+        });
     } finally {
-      setIsSubmitting(false);
+        setIsSubmitting(false);
     }
-  };
+};
   // Animation variants
   const backdropVariants = {
     hidden: { opacity: 0 },
@@ -289,7 +308,7 @@ const ContactUsForm = ({ isOpen, onClose }) => {
                         >
                           {field.label}
                           {!field.required && (
-                            <span className="text-xs text-gray-400 ml-1">(Optional)</span>
+                            <span className="text-xs text-gray-400 ml-1"></span>
                           )}
                         </label>
                       </div>
