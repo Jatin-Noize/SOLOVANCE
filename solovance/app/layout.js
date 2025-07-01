@@ -12,3 +12,19 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+
+export const metadata = {
+  title: {
+    default: 'Default Site Title',
+    template: '%s | Your Brand Name'
+  },
+  description: 'Default site description',
+  metadataBase: new URL('https://yourdomain.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    images: '/og-image.jpg',
+  }
+}
