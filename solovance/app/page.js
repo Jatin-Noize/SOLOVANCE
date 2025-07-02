@@ -108,9 +108,9 @@ const Page = () => {
         <meta name="robots" content="index, follow" />
         
         {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="Logo Design Platform Website" />
         <meta property="og:url" content="https://yourwebsite.com/" />
-        <meta property="og:title" content="Your Brand Name | Powerful Solution for Your Needs" />
+        <meta property="og:title" content="Solvance | Powerful Solution for Your Needs" />
         <meta property="og:description" content="Discover our innovative solutions that help businesses grow faster. Explore our services, pricing, and portfolio." />
         <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg" />
 

@@ -57,8 +57,9 @@ export default function HeroSection() {
       className={`${herofont.className} text-5xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-extrabold sm:leading-[0.95] text-left sm:text-center`}
     >
       The First Choice in{' '}
+      <br className='sm:hidden'></br>
       <span className={`text-purple-500 ${herofont.className}`}>WHITE LABEL</span>{' '}
-      <span className="block sm:inline mt-[-0.2em] sm:mt-0">Logo Design for Agencies</span>
+      <span className="block sm:inline mt-[-0.2em] sm:mt-0">Logo Design for <br className='sm:hidden'></br>Agencies</span>
     </motion.h1>
 
     {/* Description */}
