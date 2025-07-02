@@ -101,7 +101,9 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Your Brand Name | Powerful Solution for Your Needs</title>
+          
+        <title>Solvance | Powerful Solution for logo design</title>
+          <link rel="icon" href="/SOLVANCE-03.jpg" />
         <meta name="description" content="Discover our innovative solutions that help businesses grow faster. Explore our services, pricing, and portfolio. Get started today with our easy-to-use platform." />
         <meta name="keywords" content="your, keywords, here, business, solution" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

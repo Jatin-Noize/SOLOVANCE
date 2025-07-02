@@ -36,7 +36,7 @@ export default function HeroSection() {
   };
   
   return (
-<main className="min-h-screen text-white flex items-center justify-center px-4 sm:px-6">
+<main className="min-h-screen xs:min-h-auto text-white flex items-center justify-center px-4 sm:px-6">
   <div className="max-w-3xl mt-24 sm:mt-36 text-center sm:text-left space-y-8">
     {/* Tagline */}
     <motion.div
@@ -44,23 +44,23 @@ export default function HeroSection() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.6 }}
-      className={`mx-auto max-w-fit text-md font-semibold bg-white/10 px-4 py-2 rounded-full ${button.className}`}
+      className={`mx-auto max-w-fit flex  justify-center items-center gap-3 text-md font-semibold bg-white/10 px-4 py-2 rounded-full ${button.className}`}
     >
-      Three concepts in one day
+      <div className="h-2 w-2 bg-purple-400 rounded-full animate-pulse filter blur-xs"></div> Three concepts in one day
     </motion.div>
 
-    <motion.h1
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 0.8 }}
-      className={`${herofont.className} text-5xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-extrabold sm:leading-[0.95] text-left sm:text-center`}
-    >
-      The First Choice in{' '}
-      <br className='sm:hidden'></br>
-      <span className={`text-purple-500 ${herofont.className}`}>WHITE LABEL</span>{' '}
-      <span className="block sm:inline mt-[-0.2em] sm:mt-0">Logo Design for <br className='sm:hidden'></br>Agencies</span>
-    </motion.h1>
+   <motion.h1
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: 20 }}
+  transition={{ duration: 0.8 }}
+  className={`${herofont.className} text-5xl sm:text-8xl md:text-5xl lg:text-7xl tracking-tight font-extrabold text-left sm:text-center`}
+>
+  The First Choice in{' '}
+  <br className='sm:hidden' />
+  <span className={`text-purple-500 sm:mb-2 mb-4 ${herofont.className}`}>WHITE LABEL<br /></span>
+  <span className="block sm:inline mt-[-0.2em] sm:mt-0">Logo Design for <br className='sm:hidden' />Agencies</span>
+</motion.h1>
 
     {/* Description */}
     <motion.p
