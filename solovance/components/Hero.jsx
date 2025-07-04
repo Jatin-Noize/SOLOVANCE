@@ -59,7 +59,7 @@ export default function HeroSection() {
   <br className='sm:hidden' />
   <span className={`text-purple-500 ${herofont.className}`}>WHITE LABEL</span>
   <br className='sm:hidden' />
-  <span className="block sm:inline"> Logo Design for Agencies</span>
+  <span className="block sm:inline"> Logo Design for  <br className='sm:hidden' /> Agencies</span>
 </motion.h1>
 
     {/* Description */}
