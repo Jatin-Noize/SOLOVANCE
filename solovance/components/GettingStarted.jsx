@@ -29,7 +29,7 @@ const GettingStarted = ({ id }) => {
   const steps = [
     {
      
-      description: "Just choose a plan, place your logo orderand submit your brief through our form atcheckout.",
+      description: "Just choose a plan, place your logo orderand submit your brief through our form at checkout.",
       icon:  <FaWandMagicSparkles />
     },
     {
@@ -39,7 +39,7 @@ const GettingStarted = ({ id }) => {
     },
     {
       
-      description: "Within 24 hours you’ll receive three custom logo concepts in your Solvance portal for review and feedback",
+      description: "Within 24 hours you'll receive three custom logo concepts in your Solvance portal for review and feedback",
       icon: <FaHandHolding />
     }
   ];

@@ -40,7 +40,7 @@ const MarqueeStrip = () => {
           x: {
             repeat: Infinity,
             repeatType: 'loop',
-            duration: 20,
+            duration: 10,
             ease: 'linear',
           },
         }}

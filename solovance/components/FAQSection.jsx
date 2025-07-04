@@ -23,7 +23,7 @@ const FAQSection = ({ id }) => {
   const faqs = [
     {
       question: "Are the logos made with AI?",
-      answer: "Yes, our logos are created using advanced AI technology combined with human design expertise to ensure high-quality, unique results."
+      answer: "No, the logos are not made with AI. All designs are manually created by our designers, based on your brand's requirements and creative direction."
     },
     {
       question: "Is there a money-back guarantee if I'm not satisfied with the logo?",
@@ -31,11 +31,11 @@ const FAQSection = ({ id }) => {
     },
     {
       question: "What's the turnaround time for initial design concepts?",
-      answer: "We typically deliver initial concepts within 3-5 business days after gathering all necessary information about your brand."
+      answer: "We typically deliver initial concepts within 1 day after gathering all necessary information about your brand."
     },
     {
       question: "Can I request revisions to the logo design?",
-      answer: "Yes, we include up to 3 rounds of revisions for all our logo designs to ensure you get exactly what you want."
+      answer: "Yes, we include unlimited revisions for all our logo designs to ensure you get exactly what you want."
     },
     {
       question: "How many design concepts will I receive for my logo?",
@@ -74,7 +74,8 @@ const FAQSection = ({ id }) => {
             FAQ
           </h1>
           <p className={` md:text-md text-purple-200 ${font.className}`}>
-            Get your agency in sync with Sync Logo at the best price.
+           Get your agency aligned with Solvance
+ quality service at the best price.
           </p>
         </motion.div>
 

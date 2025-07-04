@@ -85,7 +85,8 @@ export default function Footer() {
             </Link>
           </div>
           <motion.p variants={itemVariants} className={`text-sm text-gray-400 mb-6 ${footer.className}`}>
-            Get your agency in sync with Solvance at the best price.
+          Get your agency aligned with Solvance
+ quality service at the best price
           </motion.p>
           <motion.button 
             whileHover={{ scale: 1.05 }}
@@ -150,7 +151,7 @@ export default function Footer() {
         variants={containerVariants}
         className={`max-w-7xl mx-auto border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 ${footer.className} `}
       >
-        <motion.p variants={itemVariants} className="mb-4 md:mb-0">&copy; 2024 Sync Logo. All rights reserved.</motion.p>
+        <motion.p variants={itemVariants} className="mb-4 md:mb-0">&copy; 2025 Solvance. All rights reserved.</motion.p>
         <motion.div variants={containerVariants} className="flex flex-wrap gap-4 justify-center md:justify-end">
           <motion.span variants={itemVariants}>
             <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

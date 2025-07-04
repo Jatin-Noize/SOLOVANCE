@@ -48,18 +48,18 @@ export default function HeroSection() {
     >
       <div className="h-2 w-2 bg-purple-400 rounded-full animate-pulse filter blur-xs"></div> Three concepts in one day
     </motion.div>
-
-   <motion.h1
+<motion.h1
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   exit={{ opacity: 0, y: 20 }}
   transition={{ duration: 0.8 }}
-  className={`${herofont.className} text-5xl sm:text-8xl md:text-5xl lg:text-7xl tracking-tight font-extrabold text-left sm:text-center`}
+  className={`${herofont.className} text-5xl  sm:text-8xl md:text-5xl lg:text-7xl tracking-tight font-extrabold text-left sm:text-center`}
 >
   The First Choice in{' '}
   <br className='sm:hidden' />
-  <span className={`text-purple-500 sm:mb-2 mb-4 ${herofont.className}`}>WHITE LABEL<br /></span>
-  <span className="block sm:inline mt-[-0.2em] sm:mt-0">Logo Design for <br className='sm:hidden' />Agencies</span>
+  <span className={`text-purple-500 ${herofont.className}`}>WHITE LABEL</span>
+  <br className='sm:hidden' />
+  <span className="block sm:inline"> Logo Design for Agencies</span>
 </motion.h1>
 
     {/* Description */}
@@ -70,7 +70,7 @@ export default function HeroSection() {
       transition={{ delay: 0.6, duration: 0.8 }}
       className={`${hero.className} mb-12 text-zinc-400 text-lg sm:text-xl  text-left sm:text-center`}
     >
-      We deliver professionally hand-designed white label logos within 1 day all at a fixed price
+      We deliver professionally hand-designed white<br className='xs:hidden' /> label logos within 1 day all at a fixed price
     </motion.p>
 
     {/* CTA Buttons - Changed to justify-start on mobile */}
@@ -83,12 +83,13 @@ export default function HeroSection() {
     >
       <div
         href="/pricing"
+         onClick={() => scrollToSection('pricing')}
         className={`relative w-42 h-12 bg-purple-600 hover:bg-purple-700 transition-colors duration-200 text-white rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/20 whitespace-nowrap overflow-hidden ${button.className}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <button
-          onClick={() => scrollToSection('pricing')}
+         
           className={`flex items-center text-lg gap-2 transition-all duration-200 ${
             isHovered ? "opacity-0 translate-x-[-20px]" : " opacity-100"
           }`}

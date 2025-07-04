@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Inter } from "next/font/google";
 import Image from 'next/image';
-import quote from "../public/quote.png";
+import qoute from "../public/qoute.jpeg";
 import { FaRegCircleUser } from "react-icons/fa6";
 
 const bebas = Inter({
@@ -49,8 +49,8 @@ const Quote = () => {
           <div className="w-full md:w-1/2">
             <Image 
               alt="Quote illustration" 
-              src={quote} 
-              className="w-full rounded-3xl h-auto object-contain"
+              src={qoute} 
+              className="w-full rounded-xl h-auto object-contain"
               priority
             />
           </div>
@@ -66,7 +66,10 @@ const Quote = () => {
               className={`text-xl md:text-2xl  leading-7 text-white mb-6  ${bebas.className}`}
               variants={itemVariants}
             >
-              "The team was incredible to work with! Swift communication, expert designers, and a smooth process from start to finish. They captured our vision perfectly with a sleek, professional logo that truly represents our brand. Highly recommend!"
+              "Working with the team was a fantastic experience! They communicated
+quickly, brought real design expertise, and made the entire process
+seamless. The final logo is clean, professional, and perfectly reflects
+our brand's identity. We're extremely satisfied!"
             </motion.blockquote>
             
             <motion.div 
@@ -82,7 +85,7 @@ const Quote = () => {
                   className="font-medium text-white"
                   variants={itemVariants}
                 >
-                  Patrick van Putten
+                 Eneida Dimo
                 </motion.p>
                 <motion.p 
                   className="text-sm text-purple-300"
