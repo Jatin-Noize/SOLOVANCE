@@ -23,7 +23,8 @@ const herofont = Bebas_Neue({
 
 export default function HeroSection() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered1, setIsHovered1] = useState(false);
+   const [isHovered2, setIsHovered2] = useState(false);
   
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -79,53 +80,66 @@ export default function HeroSection() {
 </motion.p>
 
     {/* CTA Buttons - Changed to justify-start on mobile */}
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 10 }}
-      transition={{ delay: 0.8, duration: 0.6 }}
-      className="flex justify-start sm:justify-center gap-4"
-    >
-      <div
-        href="/pricing"
-         onClick={() => scrollToSection('pricing')}
-        className={`relative w-42 h-12 bg-purple-600 hover:bg-purple-700 transition-colors duration-200 text-white rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/20 whitespace-nowrap overflow-hidden ${button.className}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <button
-         
-          className={`flex items-center text-lg gap-2 transition-all duration-200 ${
-            isHovered ? "opacity-0 translate-x-[-20px]" : " opacity-100"
-          }`}
-        >
-          Check Plans
-          <ArrowRight size={24} className="stroke-[2.5]" />
-        </button>
+  <motion.div
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: 10 }}
+  transition={{ delay: 0.8, duration: 0.6 }}
+  className="flex justify-start sm:justify-center gap-4"
+>
+  {/* Pricing Button */}
+  <button
+    onClick={() => scrollToSection('pricing')}
+    className={`relative w-42 h-12 bg-purple-600 hover:bg-purple-700 transition-colors duration-200 text-white rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/20 whitespace-nowrap overflow-hidden ${button.className}`}
+    onMouseEnter={() => setIsHovered1(true)}
+    onMouseLeave={() => setIsHovered1(false)}
+  >
+    <span className={`flex items-center text-lg gap-2 transition-all duration-200 ${
+      isHovered1 ? "opacity-0 translate-x-[-20px]" : "opacity-100"
+    }`}>
+      Check Plans
+      <ArrowRight size={24} className="stroke-[2.5]" />
+    </span>
 
-        <ArrowUp
-          size={36}
-          className={`absolute transition-all duration-200 stroke-[2.5] ${
-            isHovered
-              ? "opacity-100 translate-y-0 rotate-45"
-              : "opacity-0 translate-y-2"
-          }`}
-        />
-      </div>
+    <ArrowUp
+      size={36}
+      className={`absolute transition-all duration-200 stroke-[2.5] ${
+        isHovered1
+          ? "opacity-100 translate-y-0 rotate-45"
+          : "opacity-0 translate-y-2"
+      }`}
+    />
+  </button>
 
-      <div>
-        <button 
-          onClick={() => {setIsContactFormOpen(true)}} 
-          className="bg-white/10 hover:bg-white/20 transition px-6 py-3 rounded-full text-white font-medium flex items-center gap-2"
-        >
-          <CalendarCheck size={24} />
-        </button>
-        <ContactUsForm
-          isOpen={isContactFormOpen}
-          onClose={() => setIsContactFormOpen(false)}
-        />
-      </div>
-    </motion.div>
+  {/* Contact Button */}
+  <button
+    onClick={() => setIsContactFormOpen(true)}
+    className="relative w-44 h-12 bg-white/10 hover:bg-gradient-to-b from-zinc-700 to-purple-400  transition-colors duration-200 text-white rounded-2xl text-sm font-medium flex items-center justify-center gap-2 overflow-hidden"
+    onMouseEnter={() => setIsHovered2(true)}
+    onMouseLeave={() => setIsHovered2(false)}
+  >
+    <span className={`flex items-center gap-2 transition-all duration-200 ${
+      isHovered2 ? 'opacity-0 -translate-x-5  ' : 'opacity-100 translate-x-0'
+    }`}>
+      Book a call
+      <CalendarCheck size={20} />
+    </span>
+
+    <CalendarCheck
+      size={28}
+      className={`absolute transition-all duration-200 stroke-[2.5] ${
+        isHovered2
+          ? 'opacity-100 rotate-45 translate-y-0'
+          : 'opacity-0 translate-y-2'
+      }`}
+    />
+  </button>
+
+  <ContactUsForm
+    isOpen={isContactFormOpen}
+    onClose={() => setIsContactFormOpen(false)}
+  />
+</motion.div>
   </div>
 </main>
   );

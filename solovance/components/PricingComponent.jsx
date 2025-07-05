@@ -77,7 +77,7 @@ const PricingComponent = ({ id }) => {
             variants={itemVariants}
             className={`text-lg text-purple-300 mb-3 ${font2.className} `}
           >
-           Get your agency’s logo designed <br/>by Solvance at the best price
+           Get your agency's logo designed <br/>by Solvance at the best price
           </motion.p>
 
           <motion.div className='' variants={itemVariants}>
@@ -244,7 +244,7 @@ const PricingComponent = ({ id }) => {
       </li>
       <li className="flex items-center text-black">
         <CheckIcon />
-        3 concepts included
+        2 concepts included
       </li>
       <li className="flex items-center text-black">
         <CheckIcon />
@@ -277,7 +277,11 @@ const PricingComponent = ({ id }) => {
 </motion.div>
           </div>
         </motion.div>
+        
       </div>
+    <p className={`text-center tracking-normal opacity-85 text-white ${font2.className} `}>
+  Note :- "50% payment required upfront, remaining 50% upon completion"
+</p>
     </section>
   );
 };

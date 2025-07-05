@@ -110,7 +110,7 @@ const CounterSection = () => {
           <CounterItem
             value={24}
             suffix="H"
-            title={"Delivery starting\nonce brief submitted"}
+            title={"Delivery starting\nonce your brief submitted"}
           />
         </div>
       </div>

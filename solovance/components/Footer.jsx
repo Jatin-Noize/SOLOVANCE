@@ -1,7 +1,10 @@
+
+"use client"
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mina, Syne } from "next/font/google";
 import Logo from "../public/SOLVANCE-04.png";
+import { ArrowUp, ArrowRight, CalendarCheck } from 'lucide-react';
 import ContactUsForm from './ContactUsForm';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -41,8 +44,10 @@ const itemVariants = {
   }
 };
 
+
 export default function Footer() {
     const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
   // Smooth scroll function
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -88,18 +93,39 @@ export default function Footer() {
           Get your agency aligned with Solvance
  quality service at the best price
           </motion.p>
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            variants={itemVariants}
-             onClick={() => setIsContactFormOpen(true)}
-            className={`bg-purple-500 mt-6 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-colors ${footer.className} `}
-          >
-            Book a call
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </motion.button>
+      <motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  variants={itemVariants}
+  onClick={() => setIsContactFormOpen(true)}
+  className={`relative w-44 h-12 bg-white/10 hover:bg-gradient-to-b from-zinc-700 to-purple-400 mt-6 transition-colors duration-200 text-white rounded-2xl text-sm font-medium flex items-center justify-center overflow-hidden ${footer.className}`}
+  onMouseEnter={() => setIsHovered(true)}
+  onMouseLeave={() => setIsHovered(false)}
+>
+  {/* Default state - text with small icon */}
+  <motion.span
+    className={`flex items-center gap-2 transition-all duration-200 absolute ${
+      isHovered ? 'opacity-0 -translate-x-5' : 'opacity-100 translate-x-0'
+    }`}
+  >
+    Book a call
+    <CalendarCheck size={20} />
+  </motion.span>
+
+  
+  <motion.span
+    className="absolute flex items-center justify-center"
+    initial={{ opacity: 0, y: 10 }}
+    animate={{
+      opacity: isHovered ? 1 : 0,
+      y: isHovered ? 0 : 10,
+      rotate: isHovered ? 45 : 0
+    }}
+    transition={{ duration: 0.2 }}
+  >
+    <CalendarCheck size={28} className="stroke-[2.5]" />
+  </motion.span>
+</motion.button>
             <ContactUsForm
         isOpen={isContactFormOpen}
         onClose={() => setIsContactFormOpen(false)}
@@ -147,26 +173,102 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <motion.div 
-        variants={containerVariants}
-        className={`max-w-7xl mx-auto border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 ${footer.className} `}
+    {/* Bottom bar */}
+<motion.div 
+  variants={containerVariants}
+  className={`max-w-7xl mx-auto border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 ${footer.className}`}
+>
+  <motion.p variants={itemVariants} className="mb-4 md:mb-0">&copy; 2025 Solvance. All rights reserved.</motion.p>
+  
+  <motion.div variants={containerVariants} className="flex flex-col md:flex-row items-center gap-6">
+    {/* Social Media Links */}
+    <motion.div variants={itemVariants} className="flex mx-10  gap-8">
+      <Link 
+        href="https://twitter.com/yourusername" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-gray-400 hover:text-purple-400 transition-colors"
+        aria-label="Twitter"
       >
-        <motion.p variants={itemVariants} className="mb-4 md:mb-0">&copy; 2025 Solvance. All rights reserved.</motion.p>
-        <motion.div variants={containerVariants} className="flex flex-wrap gap-4 justify-center md:justify-end">
-          <motion.span variants={itemVariants}>
-            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-          </motion.span>
-          <motion.span variants={itemVariants}>
-            <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
-          </motion.span>
-          <motion.span variants={itemVariants}>
-            <Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
-          </motion.span>
-          <motion.span variants={itemVariants}>
-            <Link href="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
-          </motion.span>
-        </motion.div>
-      </motion.div>
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="20" 
+          height="20" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        >
+          <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+        </svg>
+      </Link>
+      <Link 
+        href="https://instagram.com/yourusername" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-gray-400 hover:text-purple-400 transition-colors"
+        aria-label="Instagram"
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="20" 
+          height="20" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        >
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+        </svg>
+      </Link>
+      <Link 
+        href="https://linkedin.com/company/yourcompany" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-gray-400 hover:text-purple-400 transition-colors"
+        aria-label="LinkedIn"
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="20" 
+          height="20" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        >
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect width="4" height="12" x="2" y="9"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </Link>
+    </motion.div>
+
+    {/* Legal Links */}
+    <motion.div variants={containerVariants} className="flex flex-wrap gap-4 justify-center md:justify-end">
+      <motion.span variants={itemVariants}>
+        <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+      </motion.span>
+      <motion.span variants={itemVariants}>
+        <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
+      </motion.span>
+      <motion.span variants={itemVariants}>
+        <Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
+      </motion.span>
+      <motion.span variants={itemVariants}>
+        <Link href="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
+      </motion.span>
+    </motion.div>
+  </motion.div>
+</motion.div>
     </motion.footer>
   );
 }

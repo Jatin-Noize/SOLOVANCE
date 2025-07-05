@@ -29,7 +29,7 @@ const GettingStarted = ({ id }) => {
   const steps = [
     {
      
-      description: "Just choose a plan, place your logo orderand submit your brief through our form at checkout.",
+      description: "Just choose a plan, place your logo order and submit your brief through our form at checkout.",
       icon:  <FaWandMagicSparkles />
     },
     {
