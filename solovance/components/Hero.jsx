@@ -63,15 +63,20 @@ export default function HeroSection() {
 </motion.h1>
 
     {/* Description */}
-    <motion.p
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ delay: 0.6, duration: 0.8 }}
-      className={`${hero.className} mb-12 text-zinc-400 text-lg sm:text-xl  text-left sm:text-center`}
-    >
-      We deliver professionally hand-designed white<br className='xs:hidden' /> label logos within 1 day all at a fixed price
-    </motion.p>
+  <motion.p
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ delay: 0.6, duration: 0.8 }}
+  className={`${hero.className} mb-12 text-zinc-400 text-lg sm:text-xl text-left sm:text-center`}
+>
+  <span className="sm:block">
+    We deliver professionally hand-designed white{' '}
+  </span>
+  <span className="sm:block">
+    label logos within 1 day all at a fixed price
+  </span>
+</motion.p>
 
     {/* CTA Buttons - Changed to justify-start on mobile */}
     <motion.div
