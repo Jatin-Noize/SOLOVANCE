@@ -30,7 +30,7 @@ const MarqueeStrip = () => {
   ]
 
   return (
-    <div className="relative bg-[#d038ffd9] mt-12 border-t border-b border-purple-900/30 py-4 overflow-hidden">
+    <div className="relative bg-[#d038ffd9] mt-36 border-t border-b border-purple-900/30 py-4 overflow-hidden">
       <motion.div 
         className={`flex ${herofont.className}`}
         animate={{

@@ -279,8 +279,8 @@ const PricingComponent = ({ id }) => {
         </motion.div>
         
       </div>
-    <p className={`text-center tracking-normal opacity-85 text-white ${font2.className} `}>
-  Note :- "50% payment required upfront, remaining 50% upon completion"
+    <p className={`text-center mt-16 tracking-normal p-2 opacity-85 text-white ${font2.className} `}>
+  Note :- "Our payment terms require a 50% deposit to initiate the project with the balance of 50% due upon completion and approval of the final deliverables"
 </p>
     </section>
   );

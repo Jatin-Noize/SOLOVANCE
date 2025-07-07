@@ -114,11 +114,11 @@ export default function HeroSection() {
   {/* Contact Button */}
   <button
     onClick={() => setIsContactFormOpen(true)}
-    className="relative w-44 h-12 bg-white/10 hover:bg-gradient-to-b from-zinc-700 to-purple-400  transition-colors duration-200 text-white rounded-2xl text-sm font-medium flex items-center justify-center gap-2 overflow-hidden"
+    className={`relative w-44 h-12 bg-white/10 hover:bg-gradient-to-b from-zinc-700 to-purple-400  transition-colors duration-200 text-white rounded-2xl text-sm font-medium flex items-center justify-center gap-2 overflow-hidden ${button.className} `}
     onMouseEnter={() => setIsHovered2(true)}
     onMouseLeave={() => setIsHovered2(false)}
   >
-    <span className={`flex items-center gap-2 transition-all duration-200 ${
+    <span className={`flex items-center text-lg gap-2 transition-all duration-200 ${
       isHovered2 ? 'opacity-0 -translate-x-5  ' : 'opacity-100 translate-x-0'
     }`}>
       Book a call

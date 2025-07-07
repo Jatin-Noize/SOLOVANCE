@@ -205,7 +205,7 @@ export default function Footer() {
         </svg>
       </Link>
       <Link 
-        href="https://instagram.com/yourusername" 
+        href="https://www.instagram.com/solvance_agency/profilecard/?igsh=MWs2cDBnamdteWM4Mg==" 
         target="_blank" 
         rel="noopener noreferrer"
         className="text-gray-400 hover:text-purple-400 transition-colors"
@@ -228,7 +228,7 @@ export default function Footer() {
         </svg>
       </Link>
       <Link 
-        href="https://linkedin.com/company/yourcompany" 
+        href="https://www.linkedin.com/in/solvance-68a712373/" 
         target="_blank" 
         rel="noopener noreferrer"
         className="text-gray-400 hover:text-purple-400 transition-colors"
