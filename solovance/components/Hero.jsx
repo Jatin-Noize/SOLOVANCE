@@ -38,14 +38,14 @@ export default function HeroSection() {
   
   return (
 <main className="min-h-screen xs:min-h-auto text-white flex items-center justify-center px-4 sm:px-6">
-  <div className="max-w-3xl mt-24 sm:mt-36 text-center sm:text-left space-y-8">
+  <div className="max-w-3xl mt-24 sm:mt-36 text-center sm:text-left space-y-">
     {/* Tagline */}
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.6 }}
-      className={`mx-auto max-w-fit flex  justify-center items-center gap-3 text-md font-semibold bg-white/10 px-4 py-2 rounded-full ${button.className}`}
+      className={`mx-auto max-w-fit flex   justify-center items-center gap-3 text-md font-semibold bg-white/10 px-4 py-2 rounded-full ${button.className}`}
     >
       <div className="h-2 w-2 bg-purple-400 rounded-full animate-pulse filter blur-xs"></div> Three concepts in one day
     </motion.div>
@@ -54,7 +54,7 @@ export default function HeroSection() {
   animate={{ opacity: 1, y: 0 }}
   exit={{ opacity: 0, y: 20 }}
   transition={{ duration: 0.8 }}
-  className={`${herofont.className} text-5xl  sm:text-8xl md:text-5xl lg:text-7xl tracking-tight font-extrabold text-left sm:text-center`}
+  className={`${herofont.className} text-5xl mt-8 mb-4  sm:text-8xl md:text-5xl lg:text-7xl tracking-tight font-extrabold text-left sm:text-center`}
 >
   The First Choice in{' '}
   <br className='sm:hidden' />
@@ -69,7 +69,7 @@ export default function HeroSection() {
   animate={{ opacity: 1 }}
   exit={{ opacity: 0 }}
   transition={{ delay: 0.6, duration: 0.8 }}
-  className={`${hero.className} mb-12 text-zinc-400 text-lg sm:text-xl text-left sm:text-center`}
+  className={`${hero.className} mb-8 text-zinc-400 text-lg sm:text-xl text-left sm:text-center`}
 >
   <span className="sm:block">
     We deliver professionally hand-designed white{' '}

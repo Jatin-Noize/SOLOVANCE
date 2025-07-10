@@ -185,7 +185,7 @@ export default function Footer() {
   
   <motion.div variants={containerVariants} className="flex flex-col md:flex-row items-center gap-6">
     {/* Social Media Links */}
-    <motion.div variants={itemVariants} className="flex mx-10  gap-8">
+    <motion.div variants={itemVariants} className="flex mx-10  gap-4">
  <Link 
   href="https://www.facebook.com/share/1ZAeAiroNY/?mibextid=wwXIfr" 
   target="_blank" 
@@ -207,15 +207,7 @@ export default function Footer() {
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
   </svg>
 </Link>
-<Link
-  href="https://wa.me/yourphonenumber"  // Replace with your WhatsApp link
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-gray-400 hover:text-green-500 transition-colors"
-  aria-label="WhatsApp"
->
-  <FaWhatsapp className="w-5 h-5" />  {/* 20x20 equivalent */}
-</Link>
+
       <Link 
         href="https://www.instagram.com/solvance_agency/profilecard/?igsh=MWs2cDBnamdteWM4Mg==" 
         target="_blank" 
