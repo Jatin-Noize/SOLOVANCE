@@ -280,7 +280,7 @@ const PricingComponent = ({ id }) => {
         
       </div>
     <p className={`text-center mt-16 tracking-normal p-2 opacity-85 text-white ${font2.className} `}>
-  Note :- "Our payment terms require a 50% deposit to initiate the project with the balance of 50% due upon completion and approval of the final deliverables"
+ "Our payment terms require a 50% deposit to initiate the project with the balance of 50% due <br className='xs:hidden' />upon completion and approval of the final deliverables"
 </p>
     </section>
   );

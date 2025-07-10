@@ -91,7 +91,7 @@ our brand's identity. We're extremely satisfied!"
                   className="text-sm text-purple-300"
                   variants={itemVariants}
                 >
-                  Founder - NL
+                  Founder - Radiant
                 </motion.p>
               </div>
             </motion.div>
