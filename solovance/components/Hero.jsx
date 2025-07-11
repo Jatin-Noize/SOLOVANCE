@@ -38,17 +38,20 @@ export default function HeroSection() {
   
   return (
 <main className="min-h-screen xs:min-h-auto text-white flex items-center justify-center px-4 sm:px-6">
-  <div className="max-w-3xl mt-24 sm:mt-36 text-center sm:text-left space-y-">
-    {/* Tagline */}
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.6 }}
-      className={`mx-auto max-w-fit flex   justify-center items-center gap-3 text-md font-semibold bg-white/10 px-4 py-2 rounded-full ${button.className}`}
-    >
-      <div className="h-2 w-2 bg-purple-400 rounded-full animate-pulse filter blur-xs"></div> Three concepts in one day
-    </motion.div>
+ <div className="max-w-3xl sm:mt-36 xs:mt-10">
+  {/* Tagline - Now properly responsive */}
+  <motion.div
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.6 }}
+    className="flex justify-start md:justify-center w-full"
+  >
+    <div className={`max-w-fit flex items-center gap-3 text-md font-semibold bg-white/10 px-4 py-2 rounded-full ${button.className}`}>
+      <div className="h-2 w-2 bg-purple-400 rounded-full animate-pulse filter blur-xs"></div> 
+      Three concepts in one day
+    </div>
+  </motion.div>
 <motion.h1
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
