@@ -4,6 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect,useState } from 'react';
 import ContactUsForm from "./ContactUsForm";
+
 import { RxCrossCircled } from "react-icons/rx";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
@@ -25,6 +26,8 @@ const PricingComponent = ({ id }) => {
     threshold: 0.2,
   });
     const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+      const [showContactForm, setShowContactForm] = useState(false);
+
 
   useEffect(() => {
     if (inView) {
@@ -146,7 +149,7 @@ const PricingComponent = ({ id }) => {
     </ul>
 
 <div className={`relative ${font2.className} `}>
-  <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center">
+  <button   onClick={() => setIsContactFormOpen(true)} className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center">
     <span className="group-hover:opacity-0 group-hover:scale-90 flex gap-4 items-center transition-all duration-300">Order now <RiShoppingBag3Line className='text-2xl'/></span>
     <RiShoppingBag3Line className="absolute text-4xl opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300" />
   </button>
@@ -208,10 +211,17 @@ const PricingComponent = ({ id }) => {
     </ul>
 
 <div className={`relative ${font2.className} `}>
-  <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center">
-  <span className="group-hover:opacity-0 group-hover:scale-90 flex gap-4 items-center transition-all duration-300">Order now <RiShoppingBag3Line className='text-2xl'/></span>
-    <RiShoppingBag3Line className="absolute text-4xl opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300" />
-  </button>
+ <button 
+         onClick={() => setIsContactFormOpen(true)}
+        className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center"
+      >
+        <span className="group-hover:opacity-0 group-hover:scale-90 flex gap-4 items-center transition-all duration-300">
+          Order now <RiShoppingBag3Line className='text-2xl'/>
+        </span>
+        <RiShoppingBag3Line className="absolute text-4xl opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300" />
+      </button>
+
+      {showContactForm && <ContactUsForm onClose={() => setShowContactForm(false)} />}
 </div>
   </div>
 </motion.div>
@@ -268,10 +278,17 @@ const PricingComponent = ({ id }) => {
       </li>
     </ul>
 <div className={`relative ${font2.className} `}>
-  <button className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center">
-  <span className="group-hover:opacity-0 group-hover:scale-90 flex gap-4 items-center transition-all duration-300">Order now <RiShoppingBag3Line className='text-2xl'/></span>
-    <RiShoppingBag3Line className="absolute text-4xl opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300" />
-  </button>
+ <button 
+      onClick={() => setIsContactFormOpen(true)}
+        className="group w-full bg-gradient-to-r from-zinc-800 to-zinc-900 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md shadow-purple-900/50 hover:from-purple-700 hover:to-purple-900 flex items-center justify-center"
+      >
+        <span className="group-hover:opacity-0 group-hover:scale-90 flex gap-4 items-center transition-all duration-300">
+          Order now <RiShoppingBag3Line className='text-2xl'/>
+        </span>
+        <RiShoppingBag3Line className="absolute text-4xl opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300" />
+      </button>
+
+      {showContactForm && <ContactUsForm onClose={() => setShowContactForm(false)} />}
 </div>
   </div>
 </motion.div>
