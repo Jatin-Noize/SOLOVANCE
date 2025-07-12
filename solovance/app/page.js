@@ -111,7 +111,7 @@ const Page = () => {
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="Logo Design Platform Website" />
-        <meta property="og:url" content="https://yourwebsite.com/" />
+        <meta property="og:url" content="https://www.facebook.com/share/1ZAeAiroNY/?mibextid=wwXIfr" />
         <meta property="og:title" content="Solvance | Powerful Solution for Your Needs" />
         <meta property="og:description" content="Discover our innovative solutions that help businesses grow faster. Explore our services, pricing, and portfolio." />
         <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg" />

@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
 
 export const metadata = {
   title: {
-    default: 'Solvance',
+    default: 'Solvance | Powerful Solution for logo design',
     template: '%s | Your Brand Name'
   },
   description: 'Default site description',
