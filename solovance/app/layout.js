@@ -17,10 +17,10 @@ export default function RootLayout({ children }) {
 export const metadata = {
   title: {
     default: 'Solvance | Powerful Solution for logo design',
-    template: '%s | Your Brand Name'
+    template: '%s | Solvance'
   },
   description: 'Default site description',
-  metadataBase: new URL('https://yourdomain.com'),
+  metadataBase: new URL('https://sovance.online'),
   alternates: {
     canonical: '/',
   },

@@ -273,6 +273,7 @@ export default function Footer() {
     </motion.div>
   </motion.div>
 </motion.div>
+<button onClick={()=>{alert("j-noize")}} className='text-white h-2 w-2'>.</button>
     </motion.footer>
   );
 }

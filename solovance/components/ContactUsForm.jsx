@@ -12,9 +12,8 @@ const font = Syne({
   weight: "400"
 })
 
-
 const ContactUsForm = ({ isOpen, onClose }) => {
- const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
@@ -44,7 +43,7 @@ const ContactUsForm = ({ isOpen, onClose }) => {
     }
   };
 
- const validateForm = () => {
+  const validateForm = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
@@ -65,11 +64,11 @@ const ContactUsForm = ({ isOpen, onClose }) => {
 
   const sendEmail = async () => {
     // Initialize EmailJS with your public key
-     emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "bMTNMQD1QdXIMPqVj");
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "bMTNMQD1QdXIMPqVj");
     
     try {
       const response = await emailjs.send(
-    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_kwl6qh6",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_kwl6qh6",
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_norrszm",
         {
           from_name: formData.name,
@@ -87,75 +86,43 @@ const ContactUsForm = ({ isOpen, onClose }) => {
     }
   };
 
- 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Check rate limit in localStorage
-    const lastSubmissionTime = localStorage.getItem('lastContactSubmission');
-    if (lastSubmissionTime) {
-        const currentTime = Date.now();
-        const timeDiff = currentTime - parseInt(lastSubmissionTime, 10);
-        const oneHour = 60 * 60 * 1000; // milliseconds in an hour
-        
-        if (timeDiff < oneHour) {
-            setSubmitStatus({
-                success: false,
-                message: "Please wait at least one hour before submitting another message.",
-            });
-            return;
-        }
-    }
-
     if (!validateForm()) return;
     
     setIsSubmitting(true);
 
     try {
-        // Store submission time in localStorage
-        localStorage.setItem('lastContactSubmission', Date.now().toString());
+      const [apiResponse, emailSuccess] = await Promise.all([
+        axios.post("https://solvance.onrender.com/api/contact/create", formData, {
+          headers: { "Content-Type": "application/json" },
+        }),
+        sendEmail()
+      ]);
 
-        const [apiResponse, emailResult] = await Promise.all([
-            axios.post(
-                "https://solvance.onrender.com/api/contact/create",
-                formData,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            ),
-            sendEmail()
-        ]);
-
-        if (apiResponse.status === 200 || apiResponse.status === 201) {
-            if (emailResult.success) {
-                setSubmitStatus({
-                    success: true,
-                    message: "Thank you! We've received your message and sent a confirmation email.",
-                });
-            } else {
-                setSubmitStatus({
-                    success: true,
-                    message: "We've received your message, but there was an issue sending the confirmation email.",
-                });
-            }
-            setFormData({ name: "", email: "", message: "", phone: "" });
-        } else {
-            throw new Error("API submission failed");
-        }
-    } catch (error) {
-        console.error("Error submitting form:", error);
-        // Remove the stored time if submission failed
-        localStorage.removeItem('lastContactSubmission');
+      if (apiResponse.status === 200 || apiResponse.status === 201) {
         setSubmitStatus({
-            success: false,
-            message: error.message || "Something went wrong. Please try again later.",
+          success: true,
+          message: emailSuccess
+            ? "Thank you! We've received your message and sent a confirmation email."
+            : "We've received your message, but sending the confirmation email failed.",
         });
+        setFormData({ name: "", email: "", message: "", phone: "" });
+      } else {
+        throw new Error("API submission failed");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus({
+        success: false,
+        message: error.message || "Something went wrong. Please try again later.",
+      });
     } finally {
-        setIsSubmitting(false);
+      setIsSubmitting(false);
     }
-};
+  };
+
   // Animation variants
   const backdropVariants = {
     hidden: { opacity: 0 },
@@ -243,9 +210,6 @@ const handleSubmit = async (e) => {
             variants={modalVariants}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Top Accent Bar */}
-           
-
             <div className="p-6 md:p-8">
               <div className="flex justify-between items-center mb-8">
                 <motion.h2 
