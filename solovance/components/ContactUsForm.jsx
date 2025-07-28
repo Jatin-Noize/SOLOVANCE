@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
 import emailjs from '@emailjs/browser';
 import { Syne } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
@@ -94,29 +93,23 @@ const ContactUsForm = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
 
     try {
-      const [apiResponse, emailSuccess] = await Promise.all([
-        axios.post("https://solvance.onrender.com/api/contact/create", formData, {
-          headers: { "Content-Type": "application/json" },
-        }),
-        sendEmail()
-      ]);
+      const emailSuccess = await sendEmail();
 
-      if (apiResponse.status === 200 || apiResponse.status === 201) {
-        setSubmitStatus({
-          success: true,
-          message: emailSuccess
-            ? "Thank you! We've received your message and sent a confirmation email."
-            : "We've received your message, but sending the confirmation email failed.",
-        });
+      setSubmitStatus({
+        success: emailSuccess,
+        message: emailSuccess
+          ? "Thank you! We've received your message and will contact you soon."
+          : "Failed to send your message. Please try again later.",
+      });
+      
+      if (emailSuccess) {
         setFormData({ name: "", email: "", message: "", phone: "" });
-      } else {
-        throw new Error("API submission failed");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitStatus({
         success: false,
-        message: error.message || "Something went wrong. Please try again later.",
+        message: "Something went wrong. Please try again later.",
       });
     } finally {
       setIsSubmitting(false);

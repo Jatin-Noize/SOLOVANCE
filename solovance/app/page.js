@@ -69,34 +69,7 @@ const AnimatedSection = ({ children, id }) => {
 };
 
 const Page = () => {
-  useEffect(() => {
-    // Create stars
-    const stars = () => {
-      const count = 200;
-      const container = document.querySelector('.star-container');
-      
-      for (let i = 0; i < count; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        
-        const x = Math.floor(Math.random() * 100);
-        const y = Math.floor(Math.random() * 100);
-        const duration = Math.random() * 10;
-        const size = Math.random() * 2;
-        
-        star.style.left = `${x}%`;
-        star.style.top = `${y}%`;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.animationDuration = `${5 + duration}s`;
-        star.style.animationDelay = `${duration}s`;
-        
-        container?.appendChild(star);
-      }
-    };
-    
-    stars();
-  }, []);
+
 
   return (
     <>
@@ -128,6 +101,16 @@ const Page = () => {
       </Head>
 
       <div className='min-h-screen bg-gradient-to-br from-purple-900 via-black to-purple-900 relative overflow-hidden'>
+          {[...Array(100)].map((_, i) => (
+    <div key={i} className="star" style={{
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      width: `${Math.random() * 2 + 1}px`,
+      height: `${Math.random() * 2 + 1}px`,
+      animationDuration: `${Math.random() * 10 + 5}s`,
+      animationDelay: `${Math.random() * 5}s`
+    }} />
+  ))}
         {/* Star container */}
         <div className="star-container absolute inset-0 overflow-hidden pointer-events-none"></div>
         

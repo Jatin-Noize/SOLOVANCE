@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { Bebas_Neue, Inter } from "next/font/google";
 import Image from 'next/image';
-import qoute from "../public/qoute.jpeg";
-import radiant from "../public/radiant.jpg"
+import qoute from "../public/qoute.avif";
+import radiant from "../public/radiant.avif"
 import qoute2 from "../public/qoute2.jpeg";
-import abuntu from "../public/abuntu.jpg"
+import abuntu from "../public/abuntu.avif"
 import { FaRegCircleUser } from "react-icons/fa6";
 
 const bebas = Inter({
