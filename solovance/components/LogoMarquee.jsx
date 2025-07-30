@@ -80,7 +80,7 @@ export default function LogoMarquee({ id }) {
       className="relative w-96 h-52"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
     >
       <div className="relative w-full h-full">
         <Image
